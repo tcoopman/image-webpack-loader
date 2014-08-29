@@ -1,18 +1,18 @@
 {
   "name": "image-loader",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Image loader module for webpack",
   "author": "Thomas Coopman @tcoopman",
   "licenses": [
-		{
-			"type": "MIT",
-			"url": "http://www.opensource.org/licenses/mit-license.php"
-		}
-	],
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
   "repository": {
-		"type": "git",
-		"url": "git@github.com:tcoopman/image-loader.git"
-	},
+    "type": "git",
+    "url": "git@github.com:tcoopman/image-loader.git"
+  },
   "dependencies": {
     "imagemin": "^1.0.4",
     "loader-utils": "^0.2.3"

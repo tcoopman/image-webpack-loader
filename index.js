@@ -27,11 +27,10 @@ module.exports = function(content) {
 
   imagemin.optimize(function (err, data) {
     if (err) {
-      callback(err);
+      return callback(err);
     }
 
-    this.emitFile(name, data.contents);
-    callback(null, "module.exports = __webpack_public_path__ + " + JSON.stringify(name));
+    callback(null, data.contents);
   }.bind(this));
 };
 module.exports.raw = true;

@@ -1,6 +1,6 @@
 {
   "name": "image-webpack-loader",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Image loader module for webpack",
   "author": "Thomas Coopman @tcoopman",
   "licenses": [

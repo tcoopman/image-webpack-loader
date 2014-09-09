@@ -9,7 +9,7 @@ Image loader module for webpack
 ## Install
 
 ```sh
-$ npm install --save-dev git://github.com/tcoopman/image-loader.git
+$ npm install image-webpack-loader --save-dev 
 ```
 
 ## Usage

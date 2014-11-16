@@ -25,12 +25,12 @@ module.exports = function(content) {
 		.use(Imagemin.jpegtran({progressive: options.progressive}))
 		.use(Imagemin.optipng({optimizationLevel: options.optimizationLevel}));
 
-  imagemin.optimize(function (err, data) {
+  imagemin.run(function (err, files) {
     if (err) {
       return callback(err);
     }
 
-    callback(null, data.contents);
+    callback(null, files[0].contents);
   }.bind(this));
 };
 module.exports.raw = true;

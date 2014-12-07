@@ -23,7 +23,8 @@ module.exports = function(content) {
     .src(content)
     .use(Imagemin.gifsicle({interlaced: options.interlaced}))
 		.use(Imagemin.jpegtran({progressive: options.progressive}))
-		.use(Imagemin.optipng({optimizationLevel: options.optimizationLevel}));
+		.use(Imagemin.optipng({optimizationLevel: options.optimizationLevel}))
+    .use(Imagemin.svgo());
 
   imagemin.run(function (err, files) {
     if (err) {

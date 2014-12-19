@@ -2,6 +2,7 @@ var path = require('path');
 
 var Imagemin = require('imagemin');
 var loaderUtils = require('loader-utils');
+var mozjpeg = require('imagemin-mozjpeg');
 
 
 module.exports = function(content) {
@@ -22,15 +23,16 @@ module.exports = function(content) {
   var imagemin = new Imagemin()
     .src(content)
     .use(Imagemin.gifsicle({interlaced: options.interlaced}))
-		.use(Imagemin.jpegtran({progressive: options.progressive}))
-		.use(Imagemin.optipng({optimizationLevel: options.optimizationLevel}))
+	.use(mozjpeg())
+		//.use(Imagemin.jpegtran({progressive: options.progressive}))
+		.use(Imagemin.pngquant({ quanlity: '70-90', speed: 1}))
+		//.use(Imagemin.optipng({optimizationLevel: options.optimizationLevel}))
     .use(Imagemin.svgo());
-
   imagemin.run(function (err, files) {
     if (err) {
       return callback(err);
     }
-
+	console.log("and i am here");
     callback(null, files[0].contents);
   }.bind(this));
 };

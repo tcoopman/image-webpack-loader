@@ -9,7 +9,7 @@ module.exports = function(content) {
   this.cacheable && this.cacheable();
   if(!this.emitFile) throw new Error("emitFile is required from module system");
 
-  var callback = this.async();
+  var callback = this.async(), called = false;
 
   var name = path.basename(this.resourcePath);
 
@@ -29,10 +29,11 @@ module.exports = function(content) {
 		//.use(Imagemin.optipng({optimizationLevel: options.optimizationLevel}))
     .use(Imagemin.svgo());
   imagemin.run(function (err, files) {
+    if ( called ) { console.log("something is very odd, it is being called twice"); return; }
+    called = true;
     if (err) {
       return callback(err);
     }
-	console.log("and i am here");
     callback(null, files[0].contents);
   }.bind(this));
 };

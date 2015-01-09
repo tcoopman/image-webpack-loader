@@ -2,7 +2,6 @@ var path = require('path');
 
 var Imagemin = require('imagemin');
 var loaderUtils = require('loader-utils');
-var mozjpeg = require('imagemin-mozjpeg');
 
 
 module.exports = function(content) {
@@ -23,13 +22,14 @@ module.exports = function(content) {
   var imagemin = new Imagemin()
     .src(content)
     .use(Imagemin.gifsicle({interlaced: options.interlaced}))
-	.use(mozjpeg())
-		//.use(Imagemin.jpegtran({progressive: options.progressive}))
-		.use(Imagemin.pngquant({ quanlity: '70-90', speed: 1}))
-		//.use(Imagemin.optipng({optimizationLevel: options.optimizationLevel}))
+		.use(Imagemin.jpegtran({progressive: options.progressive}))
+		.use(Imagemin.optipng({optimizationLevel: options.optimizationLevel}))
     .use(Imagemin.svgo());
+
   imagemin.run(function (err, files) {
-    if ( called ) { console.log("something is very odd, it is being called twice"); return; }
+    if (called) {
+      console.log("something is very odd, it is being called twice"); return;
+    }
     called = true;
     if (err) {
       return callback(err);

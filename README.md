@@ -9,7 +9,7 @@ Image loader module for webpack
 ## Install
 
 ```sh
-$ npm install image-webpack-loader --save-dev 
+$ npm install image-webpack-loader --save-dev
 ```
 
 ## Usage
@@ -57,6 +57,11 @@ Comes bundled with the following optimizers:
 - [gifsicle](https://github.com/kevva/imagemin-gifsicle) — *Compress GIF images*
 - [jpegtran](https://github.com/kevva/imagemin-jpegtran) — *Compress JPEG images*
 - [optipng](https://github.com/kevva/imagemin-optipng) — *Compress PNG images*
+- [svgo](https://github.com/kevva/imagemin-svgo) — *Compress SVG images*
+
+### imagemin(options)
+
+Unsupported files are ignored.
 
 ### options
 
@@ -94,6 +99,13 @@ Type: `boolean`
 Default: `false`
 
 Interlace gif for progressive rendering.
+
+#### svgoPlugins *(svg)*
+
+Type: `array`
+Default: `[]`
+
+No plugins implemented at the moment.
 
 ## Inspiration
 

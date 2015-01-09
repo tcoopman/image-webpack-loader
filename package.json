@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "imagemin": "^3.0.0",
-    "imagemin-mozjpeg": "^4.0.0",
     "loader-utils": "^0.2.5"
   },
   "devDependencies": {

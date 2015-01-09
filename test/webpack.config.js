@@ -12,7 +12,7 @@ var extensions = ['', '.js', '.jsx', '.styl'];
 module.exports = [
   {
     name: 'browser',
-    entry: './app.js',
+    entry: './test/app.js',
     output: {
       path: assetsPath,
       publicPath: publicPath,

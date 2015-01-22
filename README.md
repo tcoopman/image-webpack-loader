@@ -47,7 +47,7 @@ require("image?optimizationLevel=5&progressive=true&interlaced=true");
 
 ``` javascript
 loaders: [
-  {test: /.*\.(gif|png|jpg)$/, loaders: ['image?optimizationLevel=7&interlaced=false']}
+  {test: /\.(jpe?g|png|gif|svg)$/i, loaders: ['image?bypassOnDebug&optimizationLevel=7&interlaced=false']}
 ]
 ```
 
@@ -106,6 +106,13 @@ Type: `array`
 Default: `[]`
 
 No plugins implemented at the moment.
+
+#### bypassOnDebug *(all)*
+
+Type: `boolean`  
+Default: `false`
+
+Using this, no processing is done when webpack 'debug' mode is used and the loader acts as a regular file-loader. Use this to speed up initial and, to a lesser extent, subsequent compilations while developing or using webpack-dev-server. Normal builds are processed normally, outputting oprimized files.
 
 ## Inspiration
 

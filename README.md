@@ -47,7 +47,13 @@ require("image?optimizationLevel=5&progressive=true&interlaced=true");
 
 ``` javascript
 loaders: [
-  {test: /\.(jpe?g|png|gif|svg)$/i, loaders: ['image?bypassOnDebug&optimizationLevel=7&interlaced=false']}
+    {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+            'file?hash=sha512&digest=hex&name=[hash].[ext]',
+            'image?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
+    }
 ]
 ```
 

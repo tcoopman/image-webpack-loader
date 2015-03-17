@@ -16,34 +16,7 @@ $ npm install image-webpack-loader --save-dev
 
 [Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
 
-
-
-``` javascript
-var url = require("image!./file.png");
-// => emits file.png as a compressed file in the output directory and returns the public url
-// => returns i. e. "/public-path/file.png"
-```
-
-By default the filename is the md5 hash of the file and the extension of the required resource is appended.
-
-You can configure a custom filename template for your file (query param `name`).
-
-* `[optimizationLevel]` png - Select an optimization level between `0` and `7`.
-* `[progressive]` jpg - Lossless conversion to progressive.
-* `[interlaced]` gif - Interlace gif for progressive rendering.
-
-Examples
-
-``` javascript
-require("image?optimizationLevel=5");
-
-require("image?progressive=true");
-
-require("image?interlaced=true");
-
-require("image?optimizationLevel=5&progressive=true&interlaced=true");
-
-```
+in you _webpack.config.js_ add the _image_ loader, chained with the [file-loader](https://github.com/webpack/file-loader).
 
 ``` javascript
 loaders: [

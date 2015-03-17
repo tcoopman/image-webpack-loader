@@ -20,10 +20,10 @@
     "loader-utils": "^0.2.6"
   },
   "peerDependencies": {
-    "imagemin": "^3.1.0"
+    "imagemin": "^3.1.0",
+    "file-loader": "^0.8.1"
   },
   "devDependencies": {
-    "webpack": "^1.4.13",
-    "file-loader": "^0.8.1"
+    "webpack": "^1.7.3"
   }
 }

@@ -16,7 +16,7 @@ module.exports = function(content) {
   var callback = this.async(), called = false;
 
   if (this.debug === true && options.bypassOnDebug === true) {
-    // Bypass processing while on wathch mode
+    // Bypass processing while on watch mode
     return callback(null, content);
   } else {
     var imagemin = new Imagemin()

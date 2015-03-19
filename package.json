@@ -21,7 +21,7 @@
   },
   "peerDependencies": {
     "imagemin": "^3.1.0",
-    "file-loader": "^0.8.1"
+    "file-loader": "*"
   },
   "devDependencies": {
     "webpack": "^1.7.3"

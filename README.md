@@ -94,7 +94,7 @@ Default: `false`
 
 Interlace gif for progressive rendering.
 
-#### svgoPlugins *(svg)*
+#### svgo *(svg)*
 
 Type: `object`
 Default: `{}`

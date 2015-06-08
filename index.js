@@ -1,4 +1,5 @@
 var Imagemin = require('imagemin');
+var imageminPngquant = require('imagemin-pngquant');
 var loaderUtils = require('loader-utils');
 
 
@@ -10,7 +11,8 @@ module.exports = function(content) {
     interlaced: query.interlaced || false,
     progressive: query.progressive || false,
     optimizationLevel: query.optimizationLevel || 3,
-    bypassOnDebug: query.bypassOnDebug || false
+    bypassOnDebug: query.bypassOnDebug || false,
+    pngquant: query.pngquant || false
   };
 
   var callback = this.async(), called = false;
@@ -31,6 +33,10 @@ module.exports = function(content) {
       optimizationLevel: options.optimizationLevel
     }))
     .use(Imagemin.svgo());
+
+    if (options.pngquant) {
+      imagemin.use(imageminPngquant(options.pngquant));
+    }
 
     imagemin.run(function(err, files) {
       if (called) {

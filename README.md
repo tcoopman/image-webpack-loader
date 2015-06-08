@@ -96,10 +96,10 @@ Interlace gif for progressive rendering.
 
 #### svgoPlugins *(svg)*
 
-Type: `array`
-Default: `[]`
+Type: `object`
+Default: `{}`
 
-No plugins implemented at the moment.
+Pass options to [svgo](https://github.com/svg/svgo).
 
 #### bypassOnDebug *(all)*
 

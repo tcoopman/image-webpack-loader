@@ -12,7 +12,8 @@ module.exports = function(content) {
     progressive: query.progressive || false,
     optimizationLevel: query.optimizationLevel || 3,
     bypassOnDebug: query.bypassOnDebug || false,
-    pngquant: query.pngquant || false
+    pngquant: query.pngquant || false,
+    svgo: query.svgo || {} 
   };
 
   var callback = this.async(), called = false;
@@ -32,7 +33,7 @@ module.exports = function(content) {
     .use(Imagemin.optipng({
       optimizationLevel: options.optimizationLevel
     }))
-    .use(Imagemin.svgo());
+    .use(Imagemin.svgo(options.svgo));
 
     if (options.pngquant) {
       imagemin.use(imageminPngquant(options.pngquant));

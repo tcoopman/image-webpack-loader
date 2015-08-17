@@ -16,9 +16,9 @@ $ npm install image-webpack-loader --save-dev
 
 [Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
 
-in you _webpack.config.js_ add the _image_ loader, chained with the [file-loader](https://github.com/webpack/file-loader).
+In your `webpack.config.js`, add the image-loader, chained with the [file-loader](https://github.com/webpack/file-loader):
 
-``` javascript
+```javascript
 loaders: [
     {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -34,7 +34,7 @@ If you want to use [pngquant](https://pngquant.org/) you must use the json optio
 notation like this:
 
 ```javascript
-loader = [
+loaders: [
   {
     test: /.*\.(gif|png|jpe?g|svg)$/i,
     loaders: [

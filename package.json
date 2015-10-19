@@ -18,9 +18,7 @@
   },
   "dependencies": {
     "imagemin-pngquant": "^4.1.0",
-    "loader-utils": "^0.2.9"
-  },
-  "peerDependencies": {
+    "loader-utils": "^0.2.9",
     "imagemin": "^3.2.1",
     "file-loader": "*"
   },

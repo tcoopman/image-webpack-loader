@@ -17,12 +17,12 @@
     "url": "git@github.com:tcoopman/image-webpack-loader.git"
   },
   "dependencies": {
-    "imagemin-pngquant": "^4.1.0",
-    "loader-utils": "^0.2.9",
-    "imagemin": "^3.2.1",
+    "imagemin-pngquant": "^4.2.0",
+    "loader-utils": "^0.2.12",
+    "imagemin": "^4.0.0",
     "file-loader": "*"
   },
   "devDependencies": {
-    "webpack": "^1.9.10"
+    "webpack": "^1.12.11"
   }
 }

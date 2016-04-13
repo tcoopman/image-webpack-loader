@@ -30,13 +30,14 @@ module.exports = function(content) {
     .use(Imagemin.jpegtran({
       progressive: options.progressive
     }))
-    .use(Imagemin.optipng({
-      optimizationLevel: options.optimizationLevel
-    }))
     .use(Imagemin.svgo(options.svgo));
 
     if (options.pngquant) {
       imagemin.use(imageminPngquant(options.pngquant));
+    } else {
+      imagemin.use(Imagemin.optipng({
+        optimizationLevel: options.optimizationLevel
+      }));
     }
 
     imagemin.run(function(err, files) {

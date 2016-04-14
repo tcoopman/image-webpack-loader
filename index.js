@@ -6,14 +6,14 @@ var loaderUtils = require('loader-utils');
 module.exports = function(content) {
   this.cacheable && this.cacheable();
 
-  var query = loaderUtils.parseQuery(this.query);
+  var config = loaderUtils.getLoaderConfig(this, "imageWebpackLoader");
   var options = {
-    interlaced: query.interlaced || false,
-    progressive: query.progressive || false,
-    optimizationLevel: query.optimizationLevel || 3,
-    bypassOnDebug: query.bypassOnDebug || false,
-    pngquant: query.pngquant || false,
-    svgo: query.svgo || {} 
+    interlaced: config.interlaced || false,
+    progressive: config.progressive || false,
+    optimizationLevel: config.optimizationLevel || 3,
+    bypassOnDebug: config.bypassOnDebug || false,
+    pngquant: config.pngquant || false,
+    svgo: config.svgo || {}
   };
 
   var callback = this.async(), called = false;

@@ -45,6 +45,39 @@ loaders: [
 ];
 ```
 
+You can also use a configuration section in your webpack config to set global options for the loader, which will apply to all loader sections that use the image loader.
+
+```
+{
+  loaders: [
+    {
+      test: /.*\.(gif|png|jpe?g|svg)$/i,
+      loaders: [
+        'file?hash=sha512&digest=hex&name=[hash].[ext]',
+        'image-webpack'
+      ]
+    }
+  ],
+
+  imageWebpackLoader: {
+    pngquant:{
+      quality: "65-90",
+      speed: 4
+    },
+    svgo:{
+      plugins: [
+        {
+          removeViewBox: false
+        },
+        {
+          removeEmptyAttrs: false
+        }
+      ]
+    }
+  }
+}
+```
+
 Comes bundled with the following optimizers:
 
 - [gifsicle](https://github.com/kevva/imagemin-gifsicle) — *Compress GIF images*

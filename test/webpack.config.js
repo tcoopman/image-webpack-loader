@@ -5,7 +5,7 @@ var webpack = require('webpack');
 var commonLoaders = [
   {test: /.*\.(gif|png|jpe?g|svg)$/i, loaders: [
     'file?hash=sha512&digest=hex&name=[hash].[ext]',
-    '../index.js?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}, svgo:{plugins:[{removeViewBox: false},{removeEmptyAttrs: false}]}}']},
+    '../index.js?{progressive:true,optimizationLevel:7,interlaced:false}']},
 ];
 var assetsPath = path.join(__dirname, 'public/assets');
 var publicPath = 'assets/';
@@ -25,6 +25,22 @@ module.exports = [
     },
     module: {
       loaders: commonLoaders
+    },
+    imageWebpackLoader: {
+      pngquant:{
+        quality: "65-90",
+        speed: 4
+      },
+      svgo:{
+        plugins: [
+          {
+            removeViewBox: false
+          },
+          {
+            removeEmptyAttrs: false
+          }
+        ]
+      }
     }
   }
 ];

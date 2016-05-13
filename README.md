@@ -49,15 +49,17 @@ You can also use a configuration section in your webpack config to set global op
 
 ```
 {
-  loaders: [
-    {
-      test: /.*\.(gif|png|jpe?g|svg)$/i,
-      loaders: [
-        'file?hash=sha512&digest=hex&name=[hash].[ext]',
-        'image-webpack'
-      ]
-    }
-  ],
+  module: {
+    loaders: [
+      {
+        test: /.*\.(gif|png|jpe?g|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack'
+        ]
+      }
+    ]
+  },
 
   imageWebpackLoader: {
     pngquant:{

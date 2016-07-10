@@ -1,4 +1,8 @@
-var Imagemin = require('imagemin');
+var imagemin = require('imagemin');
+var imageminGifsicle = require('imagemin-gifsicle');
+var imageminJpegtran = require('imagemin-jpegtran');
+var imageminOptipng = require('imagemin-optipng');
+var imageminSvgo = require('imagemin-svgo');
 var imageminPngquant = require('imagemin-pngquant');
 var loaderUtils = require('loader-utils');
 
@@ -22,36 +26,21 @@ module.exports = function(content) {
     // Bypass processing while on watch mode
     return callback(null, content);
   } else {
-    var imagemin = new Imagemin()
-    .src(content)
-    .use(Imagemin.gifsicle({
-      interlaced: options.interlaced
-    }))
-    .use(Imagemin.jpegtran({
-      progressive: options.progressive
-    }))
-    .use(Imagemin.svgo(options.svgo));
+    var plugins = [];
+    plugins.push(imageminGifsicle({interlaced: options.interlaced}));
+    plugins.push(imageminJpegtran({progressive: options.progressive}));
+    plugins.push(imageminSvgo(options.svgo));
+    plugins.push(imageminPngquant(options.pngquant));
+    plugins.push(imageminOptipng({optimizationLevel: options.optimizationLevel}));
 
-    if (options.pngquant) {
-      imagemin.use(imageminPngquant(options.pngquant));
-    } else {
-      imagemin.use(Imagemin.optipng({
-        optimizationLevel: options.optimizationLevel
-      }));
-    }
-
-    imagemin.run(function(err, files) {
-      if (called) {
-        console.log("something is very odd, it is being called twice");
-        return;
-      }
-      called = true;
-      if (err) {
+    imagemin
+      .buffer(content, {plugins})
+      .then(data => {
+        callback(null, data);
+      })
+      .catch(err => {
         callback(err);
-      } else {
-        callback(null, files[0].contents);
-      }
-    });
+      });
   }
 };
 module.exports.raw = true;

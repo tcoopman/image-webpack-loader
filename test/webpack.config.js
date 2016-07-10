@@ -9,11 +9,10 @@ var commonLoaders = [
 ];
 var assetsPath = path.join(__dirname, 'public/assets');
 var publicPath = 'assets/';
-var extensions = ['', '.js', '.jsx', '.styl'];
+var extensions = [''];
 
 module.exports = [
   {
-    name: 'browser',
     entry: './test/app.js',
     output: {
       path: assetsPath,

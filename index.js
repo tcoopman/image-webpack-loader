@@ -30,7 +30,9 @@ module.exports = function(content) {
     plugins.push(imageminGifsicle({interlaced: options.interlaced}));
     plugins.push(imageminJpegtran({progressive: options.progressive}));
     plugins.push(imageminSvgo(options.svgo));
-    plugins.push(imageminPngquant(options.pngquant));
+    if (options.pngquant) {
+      plugins.push(imageminPngquant(options.pngquant));
+    }
     plugins.push(imageminOptipng({optimizationLevel: options.optimizationLevel}));
 
     imagemin

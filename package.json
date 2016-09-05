@@ -2,9 +2,16 @@
   "name": "image-webpack-loader",
   "version": "2.0.0",
   "description": "Image loader module for webpack",
-  "author": "Thomas Coopman @tcoopman",
+  "author": {
+    "name": "Thomas Coopman @tcoopman"
+  },
+  "main": "lib/index.js",
   "scripts": {
+    "prepublish": "node node_modules/babel-cli/bin/babel.js index.js --out-dir lib",
     "test": "node node_modules/webpack/bin/webpack.js --config test/webpack.config.js"
+  },
+  "babel": {
+	      "presets": ["es2015"]
   },
   "licenses": [
     {
@@ -27,6 +34,16 @@
     "imagemin-pngquant": "^5.0.0"
   },
   "devDependencies": {
-    "webpack": "^1.13.1"
-  }
+    "webpack": "^1.13.1",
+    "babel-cli": "~6.14.0",
+    "babel-core": "~6.14.0",
+    "babel-preset-es2015": "~6.14.0"
+  },
+  "readme": "# image-loader\n\nImage loader module for webpack\n\n> Minify PNG, JPEG, GIF and SVG images with [imagemin](https://github.com/kevva/imagemin)\n\n*Issues with the output should be reported on the imagemin [issue tracker](https://github.com/kevva/imagemin/issues).*\n\n## Install\n\n```sh\n$ npm install image-webpack-loader --save-dev\n```\n\n## Usage\n\n[Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)\n\nIn your `webpack.config.js`, add the image-loader, chained with the [file-loader](https://github.com/webpack/file-loader):\n\n```javascript\nloaders: [\n    {\n        test: /\\.(jpe?g|png|gif|svg)$/i,\n        loaders: [\n            'file?hash=sha512&digest=hex&name=[hash].[ext]',\n            'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'\n        ]\n    }\n]\n```\n\nIf you want to use [pngquant](https://pngquant.org/) you must use the json options\nnotation like this:\n\n```javascript\nloaders: [\n  {\n    test: /.*\\.(gif|png|jpe?g|svg)$/i,\n    loaders: [\n      'file?hash=sha512&digest=hex&name=[hash].[ext]',\n      'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: \"65-90\", speed: 4}}'\n    ]\n  }\n];\n```\n\nYou can also use a configuration section in your webpack config to set global options for the loader, which will apply to all loader sections that use the image loader.\n\n```\n{\n  module: {\n    loaders: [\n      {\n        test: /.*\\.(gif|png|jpe?g|svg)$/i,\n        loaders: [\n          'file?hash=sha512&digest=hex&name=[hash].[ext]',\n          'image-webpack'\n        ]\n      }\n    ]\n  },\n\n  imageWebpackLoader: {\n    pngquant:{\n      quality: \"65-90\",\n      speed: 4\n    },\n    svgo:{\n      plugins: [\n        {\n          removeViewBox: false\n        },\n        {\n          removeEmptyAttrs: false\n        }\n      ]\n    }\n  }\n}\n```\n\nComes bundled with the following optimizers:\n\n- [gifsicle](https://github.com/kevva/imagemin-gifsicle) — *Compress GIF images*\n- [jpegtran](https://github.com/kevva/imagemin-jpegtran) — *Compress JPEG images*\n- [optipng](https://github.com/kevva/imagemin-optipng) — *Compress PNG images*\n- [svgo](https://github.com/kevva/imagemin-svgo) — *Compress SVG images*\n- [pngquant](https://pngquant.org/) — *Compress PNG images*\n\n### imagemin(options)\n\nUnsupported files are ignored.\n\n### options\n\nOptions are applied to the correct files.\n\n#### optimizationLevel *(png)*\n\nType: `number`  \nDefault: `3`\n\nSelect an optimization level between `0` and `7`.\n\n> The optimization level 0 enables a set of optimization operations that require minimal effort. There will be no changes to image attributes like bit depth or color type, and no recompression of existing IDAT datastreams. The optimization level 1 enables a single IDAT compression trial. The trial chosen is what. OptiPNG thinks it’s probably the most effective. The optimization levels 2 and higher enable multiple IDAT compression trials; the higher the level, the more trials.\n\nLevel and trials:\n\n1. 1 trial\n2. 8 trials\n3. 16 trials\n4. 24 trials\n5. 48 trials\n6. 120 trials\n7. 240 trials\n\n#### progressive *(jpg)*\n\nType: `boolean`  \nDefault: `false`\n\nLossless conversion to progressive.\n\n#### interlaced *(gif)*\n\nType: `boolean`  \nDefault: `false`\n\nInterlace gif for progressive rendering.\n\n#### svgo *(svg)*\n\nType: `object`\nDefault: `{}`\n\nPass options to [svgo](https://github.com/svg/svgo).\n\n#### bypassOnDebug *(all)*\n\nType: `boolean`  \nDefault: `false`\n\nUsing this, no processing is done when webpack 'debug' mode is used and the loader acts as a regular file-loader. Use this to speed up initial and, to a lesser extent, subsequent compilations while developing or using webpack-dev-server. Normal builds are processed normally, outputting oprimized files.\n\n### imageminPngquant(options)\n\n#### options.floyd\n\nType: `number`  \nDefault: `0.5`\n\nControls level of dithering (0 = none, 1 = full).\n\n#### options.nofs\n\nType: `boolean`  \nDefault: `false`\n\nDisable Floyd-Steinberg dithering.\n\n#### options.posterize\n\nType: `number`\n\nReduce precision of the palette by number of bits. Use when the image will be\ndisplayed on low-depth screens (e.g. 16-bit displays or compressed textures).\n\n#### options.quality\n\nType: `string`\n\nInstructs pngquant to use the least amount of colors required to meet or exceed\nthe max quality. If conversion results in quality below the min quality the\nimage won't be saved.\n\nMin and max are numbers in range 0 (worst) to 100 (perfect), similar to JPEG.\n\n#### options.speed\n\nType: `number`  \nDefault: `3`\n\nSpeed/quality trade-off from `1` (brute-force) to `10` (fastest). Speed `10` has\n5% lower quality, but is 8 times faster than the default.\n\n#### options.verbose\n\nType: `boolean`  \nDefault: `false`\n\nPrint verbose status messages.\n\n## Inspiration\n\n* [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin)\n* [file-loader](https://github.com/webpack/file-loader)\n* [imagemin-pngquant](https://github.com/imagemin/imagemin-pngquant)\n\n## License\n\nMIT (http://www.opensource.org/licenses/mit-license.php)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/tcoopman/image-webpack-loader/issues"
+  },
+  "_id": "image-webpack-loader@2.0.0",
+  "_from": "image-webpack-loader@^2.0.0"
 }

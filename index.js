@@ -6,7 +6,6 @@ var imageminSvgo = require('imagemin-svgo');
 var imageminPngquant = require('imagemin-pngquant');
 var loaderUtils = require('loader-utils');
 
-
 module.exports = function(content) {
   this.cacheable && this.cacheable();
 
@@ -20,21 +19,28 @@ module.exports = function(content) {
     svgo: config.svgo || {}
   };
 
-  var callback = this.async(), called = false;
+  var callback = this.async(),
+    called = false;
 
   if (this.debug === true && options.bypassOnDebug === true) {
     // Bypass processing while on watch mode
     return callback(null, content);
   } else {
     var plugins = [];
-    plugins.push(imageminGifsicle({interlaced: options.interlaced}));
+    plugins.push(imageminGifsicle({
+      interlaced: options.interlaced
+    }));
     plugins.push(imageminMozjpeg(options.mozjpeg));
     plugins.push(imageminSvgo(options.svgo));
     plugins.push(imageminPngquant(options.pngquant));
-    plugins.push(imageminOptipng({optimizationLevel: options.optimizationLevel}));
+    plugins.push(imageminOptipng({
+      optimizationLevel: options.optimizationLevel
+    }));
 
     imagemin
-      .buffer(content, {plugins})
+      .buffer(content, {
+        plugins
+      })
       .then(data => {
         callback(null, data);
       })
@@ -43,4 +49,5 @@ module.exports = function(content) {
       });
   }
 };
+
 module.exports.raw = true;

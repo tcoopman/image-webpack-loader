@@ -8,19 +8,13 @@ var commonLoaders = [
     '../index.js?{optimizationLevel:7,interlaced:false}']},
 ];
 var assetsPath = path.join(__dirname, 'public/assets');
-var publicPath = 'assets/';
-var extensions = [''];
 
 module.exports = [
   {
     entry: './test/app.js',
     output: {
       path: assetsPath,
-      publicPath: publicPath,
       filename: 'app.[hash].js'
-    },
-    resolve: {
-      extensions: extensions
     },
     module: {
       loaders: commonLoaders

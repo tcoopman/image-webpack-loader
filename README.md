@@ -1,3 +1,6 @@
+![Dependencies status](https://david-dm.org/tcoopman/image-webpack-loader/status.svg)
+![devDependencies status](https://david-dm.org/tcoopman/image-webpack-loader/dev-status.svg)
+
 # image-loader
 
 Image loader module for webpack

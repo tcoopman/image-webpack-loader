@@ -1,32 +1,27 @@
 {
   "name": "image-webpack-loader",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Image loader module for webpack",
   "author": "Thomas Coopman @tcoopman",
-  "scripts": {
-    "test": "node node_modules/webpack/bin/webpack.js --config test/webpack.config.js"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/mit-license.php"
-    }
-  ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:tcoopman/image-webpack-loader.git"
   },
+  "scripts": {
+    "test": "rm -rf test/public/assets && ./node_modules/.bin/webpack --config test/webpack.config.js"
+  },
   "dependencies": {
-    "loader-utils": "^0.2.15",
+    "loader-utils": "^0.2.16",
     "imagemin": "^5.2.2",
-    "file-loader": "*",
-    "imagemin-gifsicle": "^5.0.0",
-    "imagemin-jpegtran": "^5.0.0",
-    "imagemin-optipng": "^5.1.0",
-    "imagemin-svgo": "^5.1.0",
+    "file-loader": "^0.9.0",
+    "imagemin-gifsicle": "^5.1.0",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-optipng": "^5.2.1",
+    "imagemin-svgo": "^5.2.0",
     "imagemin-pngquant": "^5.0.0"
   },
   "devDependencies": {
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.2"
   }
 }

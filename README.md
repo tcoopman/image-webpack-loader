@@ -50,7 +50,7 @@ loaders: [
 
 You can also use a configuration section in your webpack config to set global options for the loader, which will apply to all loader sections that use the image loader.
 
-```
+```javascript
 {
   module: {
     loaders: [

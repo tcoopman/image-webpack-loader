@@ -21,9 +21,9 @@
     "imagemin": "^5.2.2",
     "file-loader": "*",
     "imagemin-gifsicle": "^5.0.0",
-    "imagemin-jpegtran": "^5.0.0",
     "imagemin-optipng": "^5.1.0",
     "imagemin-svgo": "^5.1.0",
+    "imagemin-mozjpeg": "^6.0.0",
     "imagemin-pngquant": "^5.0.0"
   },
   "devDependencies": {

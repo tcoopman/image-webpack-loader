@@ -30,7 +30,7 @@ loaders: [
 ]
 ```
 
-If you want to use [pngquant](https://pngquant.org/) you must use the json options
+If you want to use [pngquant](https://pngquant.org/) or [mozjpeg](https://github.com/mozilla/mozjpeg) you must use the json options
 notation like this:
 
 ```javascript
@@ -39,7 +39,7 @@ loaders: [
     test: /.*\.(gif|png|jpe?g|svg)$/i,
     loaders: [
       'file?hash=sha512&digest=hex&name=[hash].[ext]',
-      'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+      'image-webpack?{optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}, mozjpeg: {quality: 65}}'
     ]
   }
 ];
@@ -62,6 +62,9 @@ You can also use a configuration section in your webpack config to set global op
   },
 
   imageWebpackLoader: {
+    mozjpeg: {
+      quality: 65
+    },
     pngquant:{
       quality: "65-90",
       speed: 4
@@ -83,7 +86,7 @@ You can also use a configuration section in your webpack config to set global op
 Comes bundled with the following optimizers:
 
 - [gifsicle](https://github.com/kevva/imagemin-gifsicle) — *Compress GIF images*
-- [jpegtran](https://github.com/kevva/imagemin-jpegtran) — *Compress JPEG images*
+- [mozjpeg](https://github.com/imagemin/imagemin-mozjpeg) — *Compress JPEG images*
 - [optipng](https://github.com/kevva/imagemin-optipng) — *Compress PNG images*
 - [svgo](https://github.com/kevva/imagemin-svgo) — *Compress SVG images*
 - [pngquant](https://pngquant.org/) — *Compress PNG images*
@@ -98,7 +101,7 @@ Options are applied to the correct files.
 
 #### optimizationLevel *(png)*
 
-Type: `number`  
+Type: `number`
 Default: `3`
 
 Select an optimization level between `0` and `7`.
@@ -115,16 +118,28 @@ Level and trials:
 6. 120 trials
 7. 240 trials
 
-#### progressive *(jpg)*
+### imageminMozjpeg(options)
 
-Type: `boolean`  
-Default: `false`
+Returns a promise for a buffer.
 
-Lossless conversion to progressive.
+#### options
+
+##### quality
+
+Type: `number`
+
+Compression quality. Min and max are numbers in range 0 (worst) to 100 (perfect).
+
+##### progressive
+
+Type: `boolean`<br>
+Default: `true`
+
+`false` creates baseline JPEG file.
 
 #### interlaced *(gif)*
 
-Type: `boolean`  
+Type: `boolean`
 Default: `false`
 
 Interlace gif for progressive rendering.
@@ -138,7 +153,7 @@ Pass options to [svgo](https://github.com/svg/svgo).
 
 #### bypassOnDebug *(all)*
 
-Type: `boolean`  
+Type: `boolean`
 Default: `false`
 
 Using this, no processing is done when webpack 'debug' mode is used and the loader acts as a regular file-loader. Use this to speed up initial and, to a lesser extent, subsequent compilations while developing or using webpack-dev-server. Normal builds are processed normally, outputting oprimized files.
@@ -147,14 +162,14 @@ Using this, no processing is done when webpack 'debug' mode is used and the load
 
 #### options.floyd
 
-Type: `number`  
+Type: `number`
 Default: `0.5`
 
 Controls level of dithering (0 = none, 1 = full).
 
 #### options.nofs
 
-Type: `boolean`  
+Type: `boolean`
 Default: `false`
 
 Disable Floyd-Steinberg dithering.
@@ -178,7 +193,7 @@ Min and max are numbers in range 0 (worst) to 100 (perfect), similar to JPEG.
 
 #### options.speed
 
-Type: `number`  
+Type: `number`
 Default: `3`
 
 Speed/quality trade-off from `1` (brute-force) to `10` (fastest). Speed `10` has
@@ -186,7 +201,7 @@ Speed/quality trade-off from `1` (brute-force) to `10` (fastest). Speed `10` has
 
 #### options.verbose
 
-Type: `boolean`  
+Type: `boolean`
 Default: `false`
 
 Print verbose status messages.

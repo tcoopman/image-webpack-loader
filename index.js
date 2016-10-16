@@ -1,6 +1,6 @@
 var imagemin = require('imagemin');
 var imageminGifsicle = require('imagemin-gifsicle');
-var imageminJpegtran = require('imagemin-jpegtran');
+var imageminMozjpeg = require('imagemin-mozjpeg');
 var imageminOptipng = require('imagemin-optipng');
 var imageminSvgo = require('imagemin-svgo');
 var imageminPngquant = require('imagemin-pngquant');
@@ -13,9 +13,9 @@ module.exports = function(content) {
   var config = loaderUtils.getLoaderConfig(this, "imageWebpackLoader");
   var options = {
     interlaced: config.interlaced || false,
-    progressive: config.progressive || false,
     optimizationLevel: config.optimizationLevel || 3,
     bypassOnDebug: config.bypassOnDebug || false,
+    mozjpeg: config.mozjpeg || false,
     pngquant: config.pngquant || false,
     svgo: config.svgo || {}
   };
@@ -28,7 +28,7 @@ module.exports = function(content) {
   } else {
     var plugins = [];
     plugins.push(imageminGifsicle({interlaced: options.interlaced}));
-    plugins.push(imageminJpegtran({progressive: options.progressive}));
+    plugins.push(imageminMozjpeg(options.mozjpeg));
     plugins.push(imageminSvgo(options.svgo));
     plugins.push(imageminPngquant(options.pngquant));
     plugins.push(imageminOptipng({optimizationLevel: options.optimizationLevel}));

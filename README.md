@@ -85,7 +85,31 @@ You can also use a configuration section in your webpack config to set global op
   }
 }
 ```
+With webpack 2 now supporting query object syntax, you can also write as
 
+```js
+
+loaders: [
+  {
+    test: /.*\.(gif|png|jpe?g|svg)$/i,
+    loaders: [
+      'file-loader',
+      {
+        loader: 'image-webpack',
+        query: {
+          progressive: true,
+          optimizationLevel: 7,
+          interlaced: false,
+          pngquant: {
+            quality: '65-90',
+            speed: 4
+          }
+        }
+      }
+    ]
+  }
+]
+```
 Comes bundled with the following optimizers:
 
 - [gifsicle](https://github.com/kevva/imagemin-gifsicle) — *Compress GIF images*

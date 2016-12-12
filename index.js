@@ -12,11 +12,11 @@ module.exports = function(content) {
   var config = loaderUtils.getLoaderConfig(this, "imageWebpackLoader");
   var options = {
     bypassOnDebug: config.bypassOnDebug || false,
-    gifsicle: config.gifsicle || false,
-    mozjpeg: config.mozjpeg || false,
-    pngquant: config.pngquant || false,
-    optipng: config.optipng || false,
-    svgo: config.svgo || false
+    gifsicle: config.gifsicle || {},
+    mozjpeg: config.mozjpeg || {},
+    pngquant: config.pngquant || {},
+    optipng: config.optipng || {},
+    svgo: config.svgo || {}
   };
 
   var callback = this.async(),
@@ -27,11 +27,16 @@ module.exports = function(content) {
     return callback(null, content);
   } else {
     var plugins = [];
-    plugins.push(imageminGifsicle(options.gifsicle));
-    plugins.push(imageminMozjpeg(options.mozjpeg));
-    plugins.push(imageminSvgo(options.svgo));
-    plugins.push(imageminPngquant(options.pngquant));
-    plugins.push(imageminOptipng(options.optipng));
+    if(options.gifsicle.enabled !== false)
+      plugins.push(imageminGifsicle(options.gifsicle));
+    if(options.mozjpeg.enabled !== false)
+      plugins.push(imageminMozjpeg(options.mozjpeg));
+    if(options.svgo.enabled !== false)
+      plugins.push(imageminSvgo(options.svgo));
+    if(options.pngquant.enabled !== false)
+      plugins.push(imageminPngquant(options.pngquant));
+    if(options.optipng.enabled !== false)
+      plugins.push(imageminOptipng(options.optipng));
 
     imagemin
       .buffer(content, {

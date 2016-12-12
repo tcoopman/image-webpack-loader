@@ -39,7 +39,7 @@ module.exports = function(content) {
   }
 
   var callback = this.async(),
-  called = false;
+    called = false;
 
   if (this.debug === true && options.bypassOnDebug === true) {
     // Bypass processing while on watch mode
@@ -58,15 +58,15 @@ module.exports = function(content) {
       plugins.push(imageminOptipng(options.optipng));
 
     imagemin
-    .buffer(content, {
-      plugins
-    })
-    .then(data => {
-      callback(null, data);
-    })
-    .catch(err => {
-      callback(err);
-    });
+      .buffer(content, {
+        plugins
+      })
+      .then(data => {
+        callback(null, data);
+      })
+      .catch(err => {
+        callback(err);
+      });
   }
 };
 

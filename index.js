@@ -12,15 +12,34 @@ module.exports = function(content) {
   var config = loaderUtils.getLoaderConfig(this, "imageWebpackLoader");
   var options = {
     bypassOnDebug: config.bypassOnDebug || false,
+    interlaced: config.interlaced || false,
+    optimizationLevel: config.optimizationLevel || 3,
     gifsicle: config.gifsicle || {},
     mozjpeg: config.mozjpeg || {},
     pngquant: config.pngquant || {},
     optipng: config.optipng || {},
     svgo: config.svgo || {}
   };
+  // Remove line 15-16 and 23-39 in new major version
+  if(config.gifsicle === undefined){
+    options.gifsicle.interlaced = options.interlaced;
+	  this.emitWarning("DEPRECATED. Configure gifsicles interlaced option in it's own options. (gifsicle.interlaced)")
+  } else {
+ 	  if(config.hasOwnProperty('interlaced')){
+	    this.emitWarning("DEPRECATED. Configure gifsicles interlaced option in it's own options. (gifsicle.interlaced)")
+ 	  }
+  }
+  if(config.optipng === undefined){
+    options.optipng.optimizationLevel = options.optimizationLevel;
+	  this.emitWarning("DEPRECATED. Configure optipngs optimizationLevel option in it's own options. (optipng.optimizationLevel)")
+  } else {
+  	if(config.hasOwnProperty('optimizationLevel')){
+	    this.emitWarning("DEPRECATED. Configure optipngs optimizationLevel option in it's own options. (optipng.optimizationLevel)")
+    }
+  }
 
   var callback = this.async(),
-    called = false;
+  called = false;
 
   if (this.debug === true && options.bypassOnDebug === true) {
     // Bypass processing while on watch mode
@@ -39,15 +58,15 @@ module.exports = function(content) {
       plugins.push(imageminOptipng(options.optipng));
 
     imagemin
-      .buffer(content, {
-        plugins
-      })
-      .then(data => {
-        callback(null, data);
-      })
-      .catch(err => {
-        callback(err);
-      });
+    .buffer(content, {
+      plugins
+    })
+    .then(data => {
+      callback(null, data);
+    })
+    .catch(err => {
+      callback(err);
+    });
   }
 };
 

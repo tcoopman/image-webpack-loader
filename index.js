@@ -12,30 +12,20 @@ module.exports = function(content) {
   var config = loaderUtils.getLoaderConfig(this, "imageWebpackLoader");
   var options = {
     bypassOnDebug: config.bypassOnDebug || false,
-    interlaced: config.interlaced || false,
-    optimizationLevel: config.optimizationLevel || 3,
     gifsicle: config.gifsicle || {},
     mozjpeg: config.mozjpeg || {},
     pngquant: config.pngquant || {},
     optipng: config.optipng || {},
     svgo: config.svgo || {}
   };
-  // Remove line 15-16 and 23-39 in new major version
-  if(config.gifsicle === undefined){
-    options.gifsicle.interlaced = options.interlaced;
-	  this.emitWarning("DEPRECATED. Configure gifsicles interlaced option in it's own options. (gifsicle.interlaced)")
-  } else {
- 	  if(config.hasOwnProperty('interlaced')){
-	    this.emitWarning("DEPRECATED. Configure gifsicles interlaced option in it's own options. (gifsicle.interlaced)")
- 	  }
+  // Remove in interlaced adn optimizationLevel checks in new major version
+  if (config.hasOwnProperty('interlaced')) {
+    options.gifsicle.interlaced = config.interlaced;
+    this.emitWarning("DEPRECATED. Configure gifsicle's interlaced option in it's own options. (gifsicle.interlaced)");
   }
-  if(config.optipng === undefined){
-    options.optipng.optimizationLevel = options.optimizationLevel;
-	  this.emitWarning("DEPRECATED. Configure optipngs optimizationLevel option in it's own options. (optipng.optimizationLevel)")
-  } else {
-  	if(config.hasOwnProperty('optimizationLevel')){
-	    this.emitWarning("DEPRECATED. Configure optipngs optimizationLevel option in it's own options. (optipng.optimizationLevel)")
-    }
+  if (config.hasOwnProperty('optimizationLevel')) {
+    options.optipng.optimizationLevel = config.optimizationLevel;
+    this.emitWarning("DEPRECATED. Configure optipng's optimizationLevel option in it's own options. (optipng.optimizationLevel)");
   }
 
   var callback = this.async(),

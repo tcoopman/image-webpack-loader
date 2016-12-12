@@ -12,11 +12,11 @@ module.exports = function(content) {
   var config = loaderUtils.getLoaderConfig(this, "imageWebpackLoader");
   var options = {
     bypassOnDebug: config.bypassOnDebug || false,
-    gifsicle: config.gifsicle || false,
-    mozjpeg: config.mozjpeg || false,
-    pngquant: config.pngquant || false,
-    optipng: config.optipng || false,
-    svgo: config.svgo || false
+    gifsicle: config.gifsicle || {},
+    mozjpeg: config.mozjpeg || {},
+    pngquant: config.pngquant || {},
+    optipng: config.optipng || {},
+    svgo: config.svgo || {}
   };
 
   var callback = this.async(),

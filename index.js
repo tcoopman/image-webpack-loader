@@ -18,6 +18,15 @@ module.exports = function(content) {
     optipng: config.optipng || {},
     svgo: config.svgo || {}
   };
+  // Remove in interlaced adn optimizationLevel checks in new major version
+  if (config.hasOwnProperty('interlaced')) {
+    options.gifsicle.interlaced = config.interlaced;
+    this.emitWarning("DEPRECATED. Configure gifsicle's interlaced option in it's own options. (gifsicle.interlaced)");
+  }
+  if (config.hasOwnProperty('optimizationLevel')) {
+    options.optipng.optimizationLevel = config.optimizationLevel;
+    this.emitWarning("DEPRECATED. Configure optipng's optimizationLevel option in it's own options. (optipng.optimizationLevel)");
+  }
 
   var callback = this.async(),
     called = false;

@@ -183,7 +183,7 @@ Pass options to [svgo](https://github.com/svg/svgo).
 Type: `boolean`
 Default: `false`
 
-Using this, no processing is done when webpack 'debug' mode is used and the loader acts as a regular file-loader. Use this to speed up initial and, to a lesser extent, subsequent compilations while developing or using webpack-dev-server. Normal builds are processed normally, outputting oprimized files.
+Using this, no processing is done when webpack 'debug' mode is used and the loader acts as a regular file-loader. Use this to speed up initial and, to a lesser extent, subsequent compilations while developing or using webpack-dev-server. Normal builds are processed normally, outputting optimized files.
 
 ### imageminPngquant(options)
 

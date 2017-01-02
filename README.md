@@ -96,7 +96,7 @@ loaders: [
       'file-loader',
       {
         loader: 'image-webpack',
-        query: {
+        options: {
           progressive: true,
           optimizationLevel: 7,
           interlaced: false,

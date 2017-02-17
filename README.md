@@ -51,7 +51,7 @@ notation like this:
 ```javascript
 loaders: [
   {
-    test: /.*\.(gif|png|jpe?g|svg)$/i,
+    test: /\.(gif|png|jpe?g|svg)$/i,
     loaders: [
       'file?hash=sha512&digest=hex&name=[hash].[ext]',
       'image-webpack?{optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}, mozjpeg: {quality: 65}}'
@@ -67,7 +67,7 @@ You can also use a configuration section in your webpack config to set global op
   module: {
     loaders: [
       {
-        test: /.*\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(gif|png|jpe?g|svg)$/i,
         loaders: [
           'file?hash=sha512&digest=hex&name=[hash].[ext]',
           'image-webpack'
@@ -103,7 +103,7 @@ With webpack 2 now supporting query object syntax, you can also write as
 
 loaders: [
   {
-    test: /.*\.(gif|png|jpe?g|svg)$/i,
+    test: /\.(gif|png|jpe?g|svg)$/i,
     loaders: [
       'file-loader',
       {

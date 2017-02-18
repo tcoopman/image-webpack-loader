@@ -1,16 +1,14 @@
-var imagemin = require('imagemin');
-var imageminGifsicle = require('imagemin-gifsicle');
-var imageminMozjpeg = require('imagemin-mozjpeg');
-var imageminOptipng = require('imagemin-optipng');
-var imageminSvgo = require('imagemin-svgo');
-var imageminPngquant = require('imagemin-pngquant');
-var loaderUtils = require('loader-utils');
+const imagemin = require('imagemin');
+const imageminGifsicle = require('imagemin-gifsicle');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminOptipng = require('imagemin-optipng');
+const imageminSvgo = require('imagemin-svgo');
+const imageminPngquant = require('imagemin-pngquant');
+const loaderUtils = require('loader-utils');
 
 module.exports = function(content) {
-  this.cacheable && this.cacheable();
-
-  var config = loaderUtils.getLoaderConfig(this, "imageWebpackLoader");
-  var options = {
+  const config = loaderUtils.getLoaderConfig(this, "imageWebpackLoader");
+  const options = {
     bypassOnDebug: config.bypassOnDebug || false,
     gifsicle: config.gifsicle || {},
     mozjpeg: config.mozjpeg || {},
@@ -28,36 +26,36 @@ module.exports = function(content) {
     this.emitWarning("DEPRECATED. Configure optipng's optimizationLevel option in its own options. (optipng.optimizationLevel)");
   }
 
-  var callback = this.async(),
-    called = false;
+  const callback = this.async();
+  let called = false;
 
   if (this.debug === true && options.bypassOnDebug === true) {
     // Bypass processing while on watch mode
     return callback(null, content);
-  } else {
-    var plugins = [];
-    if(options.gifsicle.enabled !== false)
-      plugins.push(imageminGifsicle(options.gifsicle));
-    if(options.mozjpeg.enabled !== false)
-      plugins.push(imageminMozjpeg(options.mozjpeg));
-    if(options.svgo.enabled !== false)
-      plugins.push(imageminSvgo(options.svgo));
-    if(options.pngquant.enabled !== false)
-      plugins.push(imageminPngquant(options.pngquant));
-    if(options.optipng.enabled !== false)
-      plugins.push(imageminOptipng(options.optipng));
-
-    imagemin
-      .buffer(content, {
-        plugins
-      })
-      .then(data => {
-        callback(null, data);
-      })
-      .catch(err => {
-        callback(err);
-      });
   }
+
+  const plugins = [];
+  if(options.gifsicle.enabled !== false)
+    plugins.push(imageminGifsicle(options.gifsicle));
+  if(options.mozjpeg.enabled !== false)
+    plugins.push(imageminMozjpeg(options.mozjpeg));
+  if(options.svgo.enabled !== false)
+    plugins.push(imageminSvgo(options.svgo));
+  if(options.pngquant.enabled !== false)
+    plugins.push(imageminPngquant(options.pngquant));
+  if(options.optipng.enabled !== false)
+    plugins.push(imageminOptipng(options.optipng));
+
+  imagemin
+    .buffer(content, {
+      plugins
+    })
+    .then(data => {
+      callback(null, data);
+    })
+    .catch(err => {
+      callback(err);
+    });
 };
 
 module.exports.raw = true;

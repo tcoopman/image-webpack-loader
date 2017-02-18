@@ -1,42 +1,54 @@
 'use strict';
-var path = require('path');
-var webpack = require('webpack');
-
-var commonLoaders = [
-  {test: /.*\.(gif|png|jpe?g|svg)$/i, loaders: [
-    'file?hash=sha512&digest=hex&name=[hash].[ext]',
-    '../index.js?{optimizationLevel:7,interlaced:false}']},
-];
-var assetsPath = path.join(__dirname, 'public/assets');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = [
   {
     entry: './test/app.js',
     output: {
-      path: assetsPath,
+      path: path.join(__dirname, 'public/assets'),
       filename: 'app.[hash].js'
     },
     module: {
-      loaders: commonLoaders
-    },
-    imageWebpackLoader: {
-      mozjpeg: {
-        quality: 65
-      },
-      pngquant:{
-        quality: "65-90",
-        speed: 4
-      },
-      svgo:{
-        plugins: [
-          {
-            removeViewBox: false
-          },
-          {
-            removeEmptyAttrs: false
-          }
-        ]
-      }
+      rules: [
+        { 
+          test: /.*\.(gif|png|jpe?g|svg)$/i, 
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                hash: 'sha512',
+                digest: 'hex',
+                name: '[hash].[ext]'
+              }
+            },
+            {
+              loader: path.resolve(__dirname, '..', 'index.js'),
+              options: {
+                optimizationLevel: 7,
+                mozjpeg: {
+                  quality: 65
+                },
+                pngquant: {
+                  quality: "65-90",
+                  speed: 4
+                },
+                svgo:{
+                  plugins: [
+                    {
+                      removeViewBox: false
+                    },
+                    {
+                      removeEmptyAttrs: false
+                    }
+                  ]
+                },
+                interlaced:false
+              }
+            }
+          ]
+        }
+      ]
     }
   }
 ];

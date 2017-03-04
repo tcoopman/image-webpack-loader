@@ -1,5 +1,6 @@
 var imagemin = require('imagemin');
 var imageminGifsicle = require('imagemin-gifsicle');
+var imageminJpegtran = require('imagemin-jpegtran');
 var imageminMozjpeg = require('imagemin-mozjpeg');
 var imageminOptipng = require('imagemin-optipng');
 var imageminSvgo = require('imagemin-svgo');
@@ -13,6 +14,7 @@ module.exports = function(content) {
   var options = {
     bypassOnDebug: config.bypassOnDebug || false,
     gifsicle: config.gifsicle || {},
+    jpegtran: config.jpegtran || {},
     mozjpeg: config.mozjpeg || {},
     pngquant: config.pngquant || {},
     optipng: config.optipng || {},
@@ -46,6 +48,9 @@ module.exports = function(content) {
       plugins.push(imageminPngquant(options.pngquant));
     if(options.optipng.enabled !== false)
       plugins.push(imageminOptipng(options.optipng));
+
+    if(options.jpegtran.enabled === true)
+      plugins.push(imageminJpegtran(options.jpegtran));
 
     imagemin
       .buffer(content, {

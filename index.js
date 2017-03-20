@@ -5,11 +5,27 @@ var imageminOptipng = require('imagemin-optipng');
 var imageminSvgo = require('imagemin-svgo');
 var imageminPngquant = require('imagemin-pngquant');
 var loaderUtils = require('loader-utils');
+var assign = require('object-assign');
+
+/**
+ * Basically the getLoaderConfig() function from loader-utils v0.2.
+ */
+function getLegacyLoaderConfig(loaderContext, defaultConfigKey) {
+  var options = loaderUtils.getOptions(loaderContext);
+  var configKey = options ? options.config : defaultConfigKey;
+  if (configKey) {
+    return assign({}, options, loaderContext.options[configKey]);
+  }
+  return options;
+}
 
 module.exports = function(content) {
   this.cacheable && this.cacheable();
 
-  var config = loaderUtils.getLoaderConfig(this, "imageWebpackLoader");
+  var config = this.version === 2 ?
+    loaderUtils.getOptions(this)
+    : getLegacyLoaderConfig(this, "imageWebpackLoader");
+
   var options = {
     bypassOnDebug: config.bypassOnDebug || false,
     gifsicle: config.gifsicle || {},

@@ -5,7 +5,7 @@ var webpack = require('webpack');
 var commonLoaders = [
   {test: /.*\.(gif|png|jpe?g|svg)$/i, loaders: [
     'file?hash=sha512&digest=hex&name=[hash].[ext]',
-    '../index.js?{optimizationLevel:7,interlaced:false}']},
+    '../index.js']},
 ];
 var assetsPath = path.join(__dirname, 'public/assets');
 
@@ -36,6 +36,14 @@ module.exports = [
             removeEmptyAttrs: false
           }
         ]
+      },
+      gifsicle: {
+        optimizationLevel: 7,
+        interlaced: false
+      },
+      optipng: {
+        optimizationLevel: 7,
+        interlaced: false
       }
     }
   }

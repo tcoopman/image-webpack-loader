@@ -9,19 +9,22 @@
     "url": "git@github.com:tcoopman/image-webpack-loader.git"
   },
   "scripts": {
-    "test": "rm -rf test/public/assets && ./node_modules/.bin/webpack --config test/webpack.config.js"
+    "test:webpack1": "npm install -q webpack@1.x && npm run test:clean && webpack --config test/webpack1.config.js",
+    "test:webpack2": "npm install -q webpack@2.x && npm run test:clean && webpack --config test/webpack2.config.js",
+    "test:clean": "rm -rf test/public/assets",
+    "test": "npm run test:webpack1 && npm run test:webpack2"
   },
   "dependencies": {
-    "loader-utils": "^0.2.16",
     "imagemin": "^5.2.2",
-    "file-loader": "^0.9.0",
     "imagemin-gifsicle": "^5.1.0",
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-optipng": "^5.2.1",
+    "imagemin-pngquant": "^5.0.0",
     "imagemin-svgo": "^5.2.0",
-    "imagemin-pngquant": "^5.0.0"
+    "loader-utils": "^1.1.0",
+    "object-assign": "^4.1.1"
   },
   "devDependencies": {
-    "webpack": "^1.13.2"
+    "file-loader": "^0.10.1"
   }
 }

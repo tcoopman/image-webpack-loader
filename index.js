@@ -64,8 +64,8 @@ module.exports = function(content) {
     if(options.optipng.enabled !== false)
       plugins.push(imageminOptipng(options.optipng));
 
-    for(var key in config.plugins){
-        plugins.push(config.plugins[key](config[key]))
+    for(var key in options.plugins){
+        plugins.push(options.plugins[key](config[key]))
     }
 
     imagemin

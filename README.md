@@ -38,8 +38,8 @@ loaders: [
     {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-            'file?hash=sha512&digest=hex&name=[hash].[ext]',
-            'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+            'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+            'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
         ]
     }
 ]
@@ -53,8 +53,8 @@ loaders: [
   {
     test: /\.(gif|png|jpe?g|svg)$/i,
     loaders: [
-      'file?hash=sha512&digest=hex&name=[hash].[ext]',
-      'image-webpack?{optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}, mozjpeg: {quality: 65}}'
+      'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+      'image-webpack-loader?{optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}, mozjpeg: {quality: 65}}'
     ]
   }
 ];
@@ -69,8 +69,8 @@ You can also use a configuration section in your webpack config to set global op
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         loaders: [
-          'file?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image-webpack'
+          'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack-loader'
         ]
       }
     ]

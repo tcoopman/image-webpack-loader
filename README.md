@@ -122,6 +122,37 @@ loaders: [
   }
 ]
 ```
+
+Webpack 2 using custom optimizers a.k.a [imagemin plugins](https://www.npmjs.com/browse/keyword/imageminplugin).
+
+```js
+loaders: [
+  {
+    test: /\.(gif|png|jpe?g|svg)$/i,
+    loaders: [
+      { loader: 'file-loader' },
+      {
+        loader: 'image-webpack-loader',
+        query: {
+          plugins: {
+              webp: require('imagemin-webp'),
+              zopfli: require('imagemin-zopfli')
+          },
+          webp: {
+              quality: 50
+          },
+          zopfli: {
+              transparent: true
+          }
+        }
+      }
+    ]
+  }
+]
+```
+
+
+
 Comes bundled with the following optimizers:
 
 - [gifsicle](https://github.com/kevva/imagemin-gifsicle) — *Compress GIF images*
@@ -245,6 +276,20 @@ Default: `false`
 
 Print verbose status messages.
 
+### Custom Optimizers (Plugins)
+
+it's also possible to pass an imagemin plugin manually in the query object
+
+<pre>
+query: {
+  plugins: {
+      <b>myCustomPlugin</b>: require('imagemin-jpegtran'),
+  },
+  <b>myCustomPlugin</b>: {
+      progressive: true
+  }
+}
+</pre>
 
 ## Inspiration
 

@@ -3,7 +3,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 var commonLoaders = [
-  {test: /.*\.(gif|png|jpe?g|svg)$/i, loaders: [
+  {test: /.*\.(gif|png|jpe?g|svg|bmp)$/i, loaders: [
     'file?hash=sha512&digest=hex&name=[hash].[ext]',
     '../index.js']},
 ];

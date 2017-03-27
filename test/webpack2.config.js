@@ -32,6 +32,12 @@ var loaderOptions = {
   }
 }
 
+var fileLoaderOptions = {
+  hash: 'sha512',
+  digest: 'hex',
+  name: '[hash].[ext]'
+}
+
 module.exports = [
   {
     entry: './test/app.js',
@@ -45,16 +51,21 @@ module.exports = [
         use: [
           {
             loader: 'file-loader',
-            options: {
-              hash: 'sha512',
-              digest: 'hex',
-              name: '[hash].[ext]'
-            }
+            options: fileLoaderOptions
           },
           {
             loader: require.resolve('../'),
             options: loaderOptions
           }
+        ]
+      }, {
+        test: /\.bmp$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: fileLoaderOptions
+          },
+          require.resolve('../') // loaderUtils.getOptions() returns null for this one
         ]
       }]
     }

@@ -26,6 +26,12 @@ module.exports = function(content) {
     loaderUtils.getOptions(this)
     : getLegacyLoaderConfig(this, "imageWebpackLoader");
 
+  if (config === null) {
+    // handle the cases in which loaderUtils.getOptions() returns null
+    // see https://github.com/webpack/loader-utils#getoptions
+    config = {}
+  }
+
   var options = {
     bypassOnDebug: config.bypassOnDebug || false,
     gifsicle: config.gifsicle || {},

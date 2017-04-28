@@ -3,29 +3,26 @@ var path = require('path');
 var webpack = require('webpack');
 
 var commonLoaders = [
-  {test: /.*\.(gif|png|jpe?g|svg)$/i, loaders: [
+  {test: /.*\.(gif|png|jpe?g|svg|bmp)$/i, loaders: [
     'file?hash=sha512&digest=hex&name=[hash].[ext]',
-    '../index.js?{progressive:true,optimizationLevel:7,interlaced:false}']},
+    '../index.js']},
 ];
 var assetsPath = path.join(__dirname, 'public/assets');
-var publicPath = 'assets/';
-var extensions = [''];
 
 module.exports = [
   {
     entry: './test/app.js',
     output: {
       path: assetsPath,
-      publicPath: publicPath,
       filename: 'app.[hash].js'
-    },
-    resolve: {
-      extensions: extensions
     },
     module: {
       loaders: commonLoaders
     },
     imageWebpackLoader: {
+      mozjpeg: {
+        quality: 65
+      },
       pngquant:{
         quality: "65-90",
         speed: 4
@@ -39,6 +36,14 @@ module.exports = [
             removeEmptyAttrs: false
           }
         ]
+      },
+      gifsicle: {
+        optimizationLevel: 7,
+        interlaced: false
+      },
+      optipng: {
+        optimizationLevel: 7,
+        interlaced: false
       }
     }
   }

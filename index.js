@@ -38,7 +38,8 @@ module.exports = function(content) {
     mozjpeg: config.mozjpeg || {},
     pngquant: config.pngquant || {},
     optipng: config.optipng || {},
-    svgo: config.svgo || {}
+    svgo: config.svgo || {},
+    plugins: config.plugins || {}
   };
   // Remove in interlaced and optimizationLevel checks in new major version
   if (config.hasOwnProperty('interlaced')) {
@@ -68,6 +69,10 @@ module.exports = function(content) {
       plugins.push(imageminPngquant(options.pngquant));
     if(options.optipng.enabled !== false)
       plugins.push(imageminOptipng(options.optipng));
+
+    for(var key in options.plugins){
+        plugins.push(options.plugins[key](config[key] || {}))
+    }
 
     imagemin
       .buffer(content, {

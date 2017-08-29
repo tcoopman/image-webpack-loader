@@ -97,24 +97,29 @@ You can also use a configuration section in your webpack config to set global op
   }
 }
 ```
-With webpack 2 now supporting query object syntax, you can also write as
+With webpack 2 now supporting options object syntax, you can also write as
 
 ```js
-
 loaders: [
   {
     test: /\.(gif|png|jpe?g|svg)$/i,
     loaders: [
-      'file-loader',
-      {
+      'file-loader', {
         loader: 'image-webpack-loader',
-        query: {
-          progressive: true,
-          optimizationLevel: 7,
-          interlaced: false,
+        options: {
+          gifsicle: {
+            interlaced: false,
+          },
+          optipng: {
+            optimizationLevel: 7,
+          },
           pngquant: {
             quality: '65-90',
             speed: 4
+          },
+          mozjpeg: {
+            progressive: true,
+            quality: 65
           }
         }
       }

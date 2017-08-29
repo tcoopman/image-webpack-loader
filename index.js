@@ -4,6 +4,7 @@ var imageminMozjpeg = require('imagemin-mozjpeg');
 var imageminOptipng = require('imagemin-optipng');
 var imageminSvgo = require('imagemin-svgo');
 var imageminPngquant = require('imagemin-pngquant');
+var imageminWebp = require('imagemin-webp');
 var loaderUtils = require('loader-utils');
 var assign = require('object-assign');
 
@@ -38,7 +39,8 @@ module.exports = function(content) {
     mozjpeg: config.mozjpeg || {},
     pngquant: config.pngquant || {},
     optipng: config.optipng || {},
-    svgo: config.svgo || {}
+    svgo: config.svgo || {},
+    webp: config.webp || {}
   };
   // Remove in interlaced, progressive and optimizationLevel checks in new major version
   if (config.hasOwnProperty('interlaced')) {
@@ -72,6 +74,8 @@ module.exports = function(content) {
       plugins.push(imageminPngquant(options.pngquant));
     if(options.optipng.enabled !== false)
       plugins.push(imageminOptipng(options.optipng));
+    if(options.webp.enabled !== false)
+      plugins.push(imageminWebp(options.webp));
 
     imagemin
       .buffer(content, {

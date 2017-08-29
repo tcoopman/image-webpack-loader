@@ -3,7 +3,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 var commonLoaders = [
-  {test: /.*\.(gif|png|jpe?g|svg|bmp)$/i, loaders: [
+  {test: /.*\.(gif|png|jpe?g|svg|bmp|webp)$/i, loaders: [
     'file?hash=sha512&digest=hex&name=[hash].[ext]',
     '../index.js']},
 ];
@@ -44,6 +44,9 @@ module.exports = [
       optipng: {
         optimizationLevel: 7,
         interlaced: false
+      },
+      webp: {
+        quality: 75
       }
     }
   }

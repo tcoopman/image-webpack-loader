@@ -29,6 +29,9 @@ var loaderOptions = {
   optipng: {
     optimizationLevel: 7,
     interlaced: false
+  },
+  webp: {
+    quality: 75
   }
 }
 
@@ -47,7 +50,7 @@ module.exports = [
     },
     module: {
       rules: [{
-        test: /.*\.(gif|png|jpe?g|svg)$/i,
+        test: /.*\.(gif|png|jpe?g|svg|webp)$/i,
         use: [
           {
             loader: 'file-loader',

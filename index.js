@@ -1,9 +1,4 @@
 var imagemin = require('imagemin');
-var imageminGifsicle = require('imagemin-gifsicle');
-var imageminMozjpeg = require('imagemin-mozjpeg');
-var imageminOptipng = require('imagemin-optipng');
-var imageminSvgo = require('imagemin-svgo');
-var imageminPngquant = require('imagemin-pngquant');
 var loaderUtils = require('loader-utils');
 var assign = require('object-assign');
 
@@ -63,15 +58,15 @@ module.exports = function(content) {
   } else {
     var plugins = [];
     if(options.gifsicle.enabled !== false)
-      plugins.push(imageminGifsicle(options.gifsicle));
+      plugins.push(require('imagemin-gifsicle')(options.gifsicle));
     if(options.mozjpeg.enabled !== false)
-      plugins.push(imageminMozjpeg(options.mozjpeg));
+      plugins.push(require('imagemin-mozjpeg')(options.mozjpeg));
     if(options.svgo.enabled !== false)
-      plugins.push(imageminSvgo(options.svgo));
+      plugins.push(require('imagemin-svgo')(options.svgo));
     if(options.pngquant.enabled !== false)
-      plugins.push(imageminPngquant(options.pngquant));
+      plugins.push(require('imagemin-pngquant')(options.pngquant));
     if(options.optipng.enabled !== false)
-      plugins.push(imageminOptipng(options.optipng));
+      plugins.push(require('imagemin-optipng')(options.optipng));
 
     imagemin
       .buffer(content, {

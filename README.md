@@ -67,7 +67,7 @@ You can also use a configuration section in your webpack config to set global op
   module: {
     loaders: [
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(gif|png|jpe?g|svg|webp)$/i,
         loaders: [
           'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
           'image-webpack-loader'

@@ -74,6 +74,8 @@ module.exports = function(content) {
       plugins.push(imageminPngquant(options.pngquant));
     if(options.optipng.enabled !== false)
       plugins.push(imageminOptipng(options.optipng));
+    if(options.webp.enabled !== false)
+      plugins.push(imageminWebp(options.webp));
 
     if(options.webp)
       plugins.push(imageminWebp(options.webp));

@@ -5,7 +5,7 @@
 
 Image loader module for webpack
 
-> Minify PNG, JPEG, GIF, SVG and WEBP images with [imagemin](https://github.com/kevva/imagemin)
+> Minify PNG, JPEG, GIF, SVG images with [imagemin](https://github.com/kevva/imagemin)
 
 *Issues with the output should be reported on the imagemin [issue tracker](https://github.com/kevva/imagemin/issues).*
 
@@ -94,6 +94,7 @@ You can also use a configuration section in your webpack config to set global op
         }
       ]
     },
+    // Specifying webp here will create a WEBP version of your JPG/PNG images
     webp: {
       quality: 75
     }
@@ -123,6 +124,10 @@ loaders: [
           mozjpeg: {
             progressive: true,
             quality: 65
+          },
+          // Specifying webp here will create a WEBP version of your JPG/PNG images
+          webp: {
+            quality: 75
           }
         }
       }
@@ -137,7 +142,7 @@ Comes bundled with the following optimizers:
 - [optipng](https://github.com/kevva/imagemin-optipng) — *Compress PNG images*
 - [svgo](https://github.com/kevva/imagemin-svgo) — *Compress SVG images*
 - [pngquant](https://github.com/imagemin/imagemin-pngquant) — *Compress PNG images*
-- [webp](https://github.com/imagemin/imagemin-webp) — *Compress WEBP images*
+- [webp](https://github.com/imagemin/imagemin-webp) — *Compress JPG & PNG images into WEBP*
 
 ### imagemin(options)
 

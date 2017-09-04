@@ -43,7 +43,7 @@ loaders: [{
 }]
 ```
 
-For each optimizer you wish to use, specify the corresponding key in options:
+For each optimizer you wish to configure, specify the corresponding key in options:
 
 ```js
 loaders: [{

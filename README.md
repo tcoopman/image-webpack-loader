@@ -38,7 +38,12 @@ loaders: [{
   test: /\.(gif|png|jpe?g|svg)$/i,
   use: [
     'file-loader',
-    'image-webpack-loader',
+    {
+      loader: 'image-webpack-loader',
+      options: {
+        bypassOnDebug: true,
+      },
+    },
   ],
 }]
 ```
@@ -96,7 +101,16 @@ If you are using Webpack 1, take a look at the [old docs](http://webpack.github.
 
 ## Options
 
-For each optimizer, an up-to-date and exhaustive list of options is available on the optimizer repository:
+Loader options:
+
+#### bypassOnDebug *(all)*
+
+Type: `boolean`
+Default: `false`
+
+Using this, no processing is done when webpack 'debug' mode is used and the loader acts as a regular file-loader. Use this to speed up initial and, to a lesser extent, subsequent compilations while developing or using webpack-dev-server. Normal builds are processed normally, outputting optimized files.
+
+For optimizer options, an up-to-date and exhaustive list is available on each optimizer repository:
 
 - [mozjpeg](https://github.com/imagemin/imagemin-mozjpeg#options)
 - [optipng](https://github.com/kevva/imagemin-optipng)

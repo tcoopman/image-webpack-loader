@@ -77,9 +77,6 @@ module.exports = function(content) {
     if(options.webp.enabled !== false)
       plugins.push(imageminWebp(options.webp));
 
-    if(options.webp)
-      plugins.push(imageminWebp(options.webp));
-
     imagemin
       .buffer(content, {
         plugins

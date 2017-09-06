@@ -35,12 +35,14 @@ module.exports = function(content) {
 
   var options = {
     bypassOnDebug: config.bypassOnDebug || false,
+    // default optimizers
     gifsicle: config.gifsicle || {},
     mozjpeg: config.mozjpeg || {},
     pngquant: config.pngquant || {},
     optipng: config.optipng || {},
     svgo: config.svgo || {},
-    webp: config.webp || {}
+    // optional optimizers
+    webp: config.webp || null
   };
   // Remove in interlaced, progressive and optimizationLevel checks in new major version
   if (config.hasOwnProperty('interlaced')) {
@@ -64,6 +66,7 @@ module.exports = function(content) {
     return callback(null, content);
   } else {
     var plugins = [];
+    // default optimizers
     if(options.gifsicle.enabled !== false)
       plugins.push(imageminGifsicle(options.gifsicle));
     if(options.mozjpeg.enabled !== false)
@@ -74,9 +77,7 @@ module.exports = function(content) {
       plugins.push(imageminPngquant(options.pngquant));
     if(options.optipng.enabled !== false)
       plugins.push(imageminOptipng(options.optipng));
-    if(options.webp.enabled !== false)
-      plugins.push(imageminWebp(options.webp));
-
+    // optional optimizers
     if(options.webp)
       plugins.push(imageminWebp(options.webp));
 

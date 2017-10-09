@@ -1,7 +1,7 @@
 ![Dependencies status](https://david-dm.org/tcoopman/image-webpack-loader/status.svg)
 ![devDependencies status](https://david-dm.org/tcoopman/image-webpack-loader/dev-status.svg)
 
-# image-loader
+# image-webpack-loader
 
 Image loader module for webpack
 
@@ -34,7 +34,7 @@ brew install libpng
 In your `webpack.config.js`, add the image-loader, chained after the [file-loader](https://github.com/webpack/file-loader):
 
 ```js
-loaders: [{
+rules: [{
   test: /\.(gif|png|jpe?g|svg)$/i,
   use: [
     'file-loader',
@@ -51,7 +51,7 @@ loaders: [{
 For each optimizer you wish to configure, specify the corresponding key in options:
 
 ```js
-loaders: [{
+rules: [{
   test: /\.(gif|png|jpe?g|svg)$/i,
   use: [
     'file-loader',

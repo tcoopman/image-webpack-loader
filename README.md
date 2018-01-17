@@ -83,7 +83,7 @@ loaders: [{
 }]
 ```
 
-Comes bundled with the following optimizers:
+Comes bundled with the following optimizers, which are automatically enabled by default:
 
 - [mozjpeg](https://github.com/imagemin/imagemin-mozjpeg) — *Compress JPEG images*
 - [optipng](https://github.com/kevva/imagemin-optipng) — *Compress PNG images*

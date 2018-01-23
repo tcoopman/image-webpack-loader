@@ -17,7 +17,7 @@
   "dependencies": {
     "imagemin": "^5.2.2",
     "imagemin-gifsicle": "^5.1.0",
-    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-mozjpeg": "^7.0.0",
     "imagemin-optipng": "^5.2.1",
     "imagemin-pngquant": "^5.0.0",
     "imagemin-svgo": "^5.2.1",

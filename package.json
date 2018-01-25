@@ -22,8 +22,7 @@
     "imagemin-pngquant": "^5.0.0",
     "imagemin-svgo": "^5.2.1",
     "imagemin-webp": "^4.0.0",
-    "loader-utils": "^1.1.0",
-    "object-assign": "^4.1.1"
+    "loader-utils": "^1.1.0"
   },
   "devDependencies": {
     "file-loader": "^0.10.1"

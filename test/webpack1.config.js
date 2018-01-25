@@ -1,53 +1,54 @@
-'use strict';
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
 
-var commonLoaders = [
-  {test: /.*\.(gif|png|jpe?g|svg|bmp|webp)$/i, loaders: [
-    'file?hash=sha512&digest=hex&name=[hash].[ext]',
-    '../index.js']},
+const commonLoaders = [
+  {
+    test: /.*\.(gif|png|jpe?g|svg|bmp|webp)$/i,
+    loaders: [
+      'file?hash=sha512&digest=hex&name=[hash].[ext]',
+      '../index.js'],
+  },
 ];
-var assetsPath = path.join(__dirname, 'public/assets');
+const assetsPath = path.join(__dirname, 'public/assets');
 
 module.exports = [
   {
     entry: './test/app.js',
     output: {
       path: assetsPath,
-      filename: 'app.[hash].js'
+      filename: 'app.[hash].js',
     },
     module: {
-      loaders: commonLoaders
+      loaders: commonLoaders,
     },
     imageWebpackLoader: {
       mozjpeg: {
-        quality: 65
+        quality: 65,
       },
-      pngquant:{
-        quality: "65-90",
-        speed: 4
+      pngquant: {
+        quality: '65-90',
+        speed: 4,
       },
-      svgo:{
+      svgo: {
         plugins: [
           {
-            removeViewBox: false
+            removeViewBox: false,
           },
           {
-            removeEmptyAttrs: false
-          }
-        ]
+            removeEmptyAttrs: false,
+          },
+        ],
       },
       gifsicle: {
         optimizationLevel: 7,
-        interlaced: false
+        interlaced: false,
       },
       optipng: {
         optimizationLevel: 7,
-        interlaced: false
+        interlaced: false,
       },
       webp: {
-        quality: 75
-      }
-    }
-  }
+        quality: 75,
+      },
+    },
+  },
 ];

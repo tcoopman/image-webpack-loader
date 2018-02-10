@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.1.0]
+
+* Delay imports #140
+
 ## [4.0.0]
 
 Updated mozjpeg to v7.0.0

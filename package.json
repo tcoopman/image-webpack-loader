@@ -20,7 +20,7 @@
     "imagemin-mozjpeg": "^7.0.0",
     "imagemin-optipng": "^5.2.1",
     "imagemin-pngquant": "^5.0.0",
-    "imagemin-svgo": "^5.2.1",
+    "imagemin-svgo": "^6.0.0",
     "imagemin-webp": "^4.0.0",
     "loader-utils": "^1.1.0",
     "object-assign": "^4.1.1"

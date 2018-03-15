@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.2.0]
+
+* Update svgo to 6.0.0 #145
+
 ## [4.1.0]
 
 * Delay imports #140

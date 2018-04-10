@@ -1,6 +1,6 @@
 ![Dependencies status](https://david-dm.org/tcoopman/image-webpack-loader/status.svg)
 ![devDependencies status](https://david-dm.org/tcoopman/image-webpack-loader/dev-status.svg)
-
+[![Build Status](https://travis-ci.org/tcoopman/image-webpack-loader.svg?branch=master)](https://travis-ci.org/tcoopman/image-webpack-loader)
 # image-webpack-loader
 
 Image loader module for webpack

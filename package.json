@@ -11,8 +11,9 @@
   "scripts": {
     "test:webpack1": "npm install -q webpack@1.x && npm run test:clean && webpack --config test/webpack1.config.js",
     "test:webpack2": "npm install -q webpack@2.x && npm run test:clean && webpack --config test/webpack2.config.js",
+    "test:webpack3": "npm install -q webpack@3.x && npm run test:clean && webpack --config test/webpack2.config.js",
     "test:clean": "rm -rf test/public/assets",
-    "test": "npm run test:webpack1 && npm run test:webpack2"
+    "test": "npm run test:webpack1 && npm run test:webpack2 && npm run test:webpack3"
   },
   "dependencies": {
     "imagemin": "^5.2.2",

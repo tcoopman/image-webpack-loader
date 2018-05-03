@@ -2,8 +2,23 @@
   "name": "image-webpack-loader",
   "version": "4.2.0",
   "description": "Image loader module for webpack",
-  "author": "Thomas Coopman @tcoopman",
-  "license": "MIT",
+  "author": {
+    "name": "Thomas Coopman @tcoopman"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "node node_modules/babel-cli/bin/babel.js index.js --out-dir lib",
+    "test": "node node_modules/webpack/bin/webpack.js --config test/webpack.config.js"
+  },
+  "babel": {
+	      "presets": ["es2015"]
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:tcoopman/image-webpack-loader.git"
@@ -27,6 +42,12 @@
     "object-assign": "^4.1.1"
   },
   "devDependencies": {
+    "webpack": "^1.13.1",
+    "babel-cli": "~6.14.0",
+    "babel-core": "~6.14.0",
+    "babel-preset-es2015": "~6.14.0",
     "file-loader": "^0.10.1"
-  }
+  },
+  "_id": "image-webpack-loader@2.0.0",
+  "_from": "image-webpack-loader@^2.0.0",
 }

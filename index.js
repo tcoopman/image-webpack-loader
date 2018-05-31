@@ -29,6 +29,7 @@ module.exports = function(content) {
 
   var options = {
     bypassOnDebug: config.bypassOnDebug || false,
+    disable: config.disable || false,
     // default optimizers
     gifsicle: config.gifsicle || {},
     mozjpeg: config.mozjpeg || {},
@@ -55,7 +56,7 @@ module.exports = function(content) {
   var callback = this.async(),
     called = false;
 
-  if (this.debug === true && options.bypassOnDebug === true) {
+  if ((this.debug === true && options.bypassOnDebug === true) || options.disable === true) {
     // Bypass processing while on watch mode
     return callback(null, content);
   } else {

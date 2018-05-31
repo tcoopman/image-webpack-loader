@@ -41,7 +41,8 @@ rules: [{
     {
       loader: 'image-webpack-loader',
       options: {
-        bypassOnDebug: true,
+        bypassOnDebug: true, // webpack@1.x
+        disable: true, // webpack@2.x and newer
       },
     },
   ],
@@ -109,6 +110,13 @@ Type: `boolean`
 Default: `false`
 
 Using this, no processing is done when webpack 'debug' mode is used and the loader acts as a regular file-loader. Use this to speed up initial and, to a lesser extent, subsequent compilations while developing or using webpack-dev-server. Normal builds are processed normally, outputting optimized files.
+
+#### disable
+
+Type: `boolean`
+Default `false`
+
+Same functionality as **bypassOnDebug** option, but doesn't depend on webpack debug mode, which was deprecated in 2.x. Basically you want to use this option if you're running webpack@2.x or newer.
 
 For optimizer options, an up-to-date and exhaustive list is available on each optimizer repository:
 

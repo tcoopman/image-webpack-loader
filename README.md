@@ -78,7 +78,15 @@ rules: [{
         webp: {
           quality: 75
         }
-      }
+      },
+      additionalPlugins: [
+          {
+              plugin: 'imagemin-jpegtran',
+              options: {
+                  progressive: true
+              }
+          }
+      ]
     },
   ],
 }]
@@ -95,6 +103,10 @@ Comes bundled with the following optimizers, which are automatically enabled by 
 And optional optimizers:
 
 - [webp](https://github.com/imagemin/imagemin-webp) — *Compress JPG & PNG images into WEBP*
+
+And you may include additional imagemin plugins and their options by defining them in additionalPlugins. You must manually install each additional plugin as a node module before using it with image-webpack-loader.
+
+[Plugins](https://www.npmjs.com/search?q=keywords:imageminplugin) to use.
 
 _Default optimizers can be disabled by specifying `optimizer.enabled: false`, and optional ones can be enabled by simply putting them in the options_
 

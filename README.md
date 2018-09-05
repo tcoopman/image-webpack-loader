@@ -80,12 +80,12 @@ rules: [{
         }
       },
       additionalPlugins: [
-          {
-              plugin: 'imagemin-jpegtran',
-              options: {
-                  progressive: true
-              }
+        {
+          plugin: 'imagemin-jpegtran',
+          options: {
+            progressive: true
           }
+        }
       ]
     },
   ],

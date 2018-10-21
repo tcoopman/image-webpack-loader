@@ -16,9 +16,6 @@
     "test:clean": "rimraf test/public/assets",
     "test": "npm run test:webpack1 && npm run test:webpack2 && npm run test:webpack3 && npm run test:webpack4"
   },
-  "peerDependencies": {
-    "webpack-cli": "^2.1.5"
-  },
   "dependencies": {
     "imagemin": "^5.3.1",
     "imagemin-gifsicle": "^5.2.0",

@@ -23,14 +23,14 @@
     "imagemin-optipng": "^6.0.0",
     "imagemin-pngquant": "^6.0.0",
     "imagemin-svgo": "^7.0.0",
-    "imagemin-webp": "^4.1.0",
+    "imagemin-webp": "^5.0.0",
     "loader-utils": "^1.1.0",
     "object-assign": "^4.1.1"
   },
   "devDependencies": {
     "file-loader": "^1.1.11",
     "rimraf": "^2.6.2",
-    "webpack": "^4.17.2",
-    "webpack-cli": "^2.1.5"
+    "webpack": "^4.27.0",
+    "webpack-cli": "^3.1.2"
   }
 }

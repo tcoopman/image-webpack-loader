@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [5.0.0]
+
+* upgrade outdated packages
+* move the image compressors to optionalDependencies.
+
 ## [4.2.0]
 
 * Update svgo to 6.0.0 #145

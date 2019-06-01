@@ -18,14 +18,16 @@
   },
   "dependencies": {
     "imagemin": "^5.3.1",
+    "loader-utils": "^1.1.0",
+    "object-assign": "^4.1.1"
+  },
+  "optionalDependencies": {
     "imagemin-gifsicle": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^6.0.0",
     "imagemin-pngquant": "^6.0.0",
     "imagemin-svgo": "^7.0.0",
-    "imagemin-webp": "^5.0.0",
-    "loader-utils": "^1.1.0",
-    "object-assign": "^4.1.1"
+    "imagemin-webp": "^5.0.0"
   },
   "devDependencies": {
     "file-loader": "^1.1.11",

@@ -121,8 +121,8 @@ Same functionality as **bypassOnDebug** option, but doesn't depend on webpack de
 For optimizer options, an up-to-date and exhaustive list is available on each optimizer repository:
 
 - [mozjpeg](https://github.com/imagemin/imagemin-mozjpeg#options)
-- [optipng](https://github.com/kevva/imagemin-optipng)
-- [pngquant](https://github.com/imagemin/imagemin-optipng#options)
+- [optipng](https://github.com/kevva/imagemin-optipng#options)
+- [pngquant](https://github.com/imagemin/imagemin-pngquant#options)
 - [svgo](https://github.com/imagemin/imagemin-svgo#options)
 - [gifsicle](https://github.com/imagemin/imagemin-gifsicle#options)
 - [webp](https://github.com/imagemin/imagemin-webp#options)

@@ -1,5 +1,8 @@
 # Change Log
 All notable changes to this project will be documented in this file.
+## [5.1.0]
+
+* upgrade outdated packages (except imagemin-pngquant because this one has an api change)
 
 ## [5.0.0]
 

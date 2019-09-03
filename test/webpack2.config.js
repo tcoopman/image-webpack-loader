@@ -1,18 +1,18 @@
-'use strict';
-var path = require('path');
-var webpack = require('webpack');
+"use strict";
+var path = require("path");
+var webpack = require("webpack");
 
-var assetsPath = path.join(__dirname, 'public/assets');
+var assetsPath = path.join(__dirname, "public/assets");
 
 var loaderOptions = {
   mozjpeg: {
     quality: 65
   },
-  pngquant:{
-    quality: "65-90",
+  pngquant: {
+    quality: [0.65, 0.9],
     speed: 4
   },
-  svgo:{
+  svgo: {
     plugins: [
       {
         removeViewBox: false
@@ -33,44 +33,47 @@ var loaderOptions = {
   webp: {
     quality: 75
   }
-}
+};
 
 var fileLoaderOptions = {
-  hash: 'sha512',
-  digest: 'hex',
-  name: '[hash].[ext]'
-}
+  hash: "sha512",
+  digest: "hex",
+  name: "[hash].[ext]"
+};
 
 module.exports = [
   {
-    entry: './test/app.js',
+    entry: "./test/app.js",
     output: {
       path: assetsPath,
-      filename: 'app.[hash].js'
+      filename: "app.[hash].js"
     },
     module: {
-      rules: [{
-        test: /.*\.(gif|png|jpe?g|svg|webp)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: fileLoaderOptions
-          },
-          {
-            loader: require.resolve('../'),
-            options: loaderOptions
-          }
-        ]
-      }, {
-        test: /\.bmp$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: fileLoaderOptions
-          },
-          require.resolve('../') // loaderUtils.getOptions() returns null for this one
-        ]
-      }]
+      rules: [
+        {
+          test: /.*\.(gif|png|jpe?g|svg|webp)$/i,
+          use: [
+            {
+              loader: "file-loader",
+              options: fileLoaderOptions
+            },
+            {
+              loader: require.resolve("../"),
+              options: loaderOptions
+            }
+          ]
+        },
+        {
+          test: /\.bmp$/i,
+          use: [
+            {
+              loader: "file-loader",
+              options: fileLoaderOptions
+            },
+            require.resolve("../") // loaderUtils.getOptions() returns null for this one
+          ]
+        }
+      ]
     }
   }
 ];

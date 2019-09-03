@@ -1,5 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
+
+## [6.0.0]
+
+* upgrade imagemin-pngquant to 8.0.0 (version bump because of the api change => quality now is an array). For more info see: https://github.com/imagemin/imagemin-pngquant#quality
+
 ## [5.1.0]
 
 * upgrade outdated packages (except imagemin-pngquant because this one has an api change)

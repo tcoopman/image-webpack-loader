@@ -37,8 +37,10 @@ module.exports = function(content) {
     optipng: config.optipng || {},
     svgo: config.svgo || {},
     // optional optimizers
-    webp: config.webp || null
+    webp: config.webp || null,
+    additionalPlugins: config.additionalPlugins || []
   };
+
   // Remove in interlaced, progressive and optimizationLevel checks in new major version
   if (config.hasOwnProperty('interlaced')) {
     options.gifsicle.interlaced = config.interlaced;
@@ -75,6 +77,11 @@ module.exports = function(content) {
     // optional optimizers
     if(options.webp)
       plugins.push(require('imagemin-webp')(options.webp));
+    // additional optimizers
+    options.additionalPlugins.forEach((plugin) => {
+      plugin.options = plugin.options || {};
+      plugins.push(require(plugin.plugin)(plugin.options));
+    });
 
     imagemin
       .buffer(content, {

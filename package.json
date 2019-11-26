@@ -30,7 +30,7 @@
     "imagemin-webp": "^5.1.0"
   },
   "devDependencies": {
-    "file-loader": "^4.2.0",
+    "file-loader": "^5.0.2",
     "rimraf": "^3.0.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"

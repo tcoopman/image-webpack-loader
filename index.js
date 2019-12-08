@@ -1,7 +1,9 @@
 var imagemin = require('imagemin');
 var loaderUtils = require('loader-utils');
 var assign = require('object-assign');
+var schemaValidation = require('schema-utils')
 
+var loaderSchema = require('./schema.json')
 /**
  * Basically the getLoaderConfig() function from loader-utils v0.2.
  */
@@ -37,7 +39,7 @@ module.exports = function(content) {
     optipng: config.optipng || {},
     svgo: config.svgo || {},
     // optional optimizers
-    webp: config.webp || null
+    webp: config.webp || {}
   };
   // Remove in interlaced, progressive and optimizationLevel checks in new major version
   if (config.hasOwnProperty('interlaced')) {
@@ -53,6 +55,10 @@ module.exports = function(content) {
     this.emitWarning("DEPRECATED. Configure optipng's optimizationLevel option in its own options. (optipng.optimizationLevel)");
   }
 
+  schemaValidation(loaderSchema, options, {
+    name: 'imageWebpackLoader'
+  });
+  
   var callback = this.async(),
     called = false;
 

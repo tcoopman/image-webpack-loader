@@ -1,0 +1,36 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "mozjpeg": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "optipng": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "pngquant": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "gifsicle": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "webp": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "svgo": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "bypassOnDebug": {
+      "type": "boolean"
+    },
+    "disable": {
+      "type": "boolean"
+    }
+  },
+  "type": "object"
+}

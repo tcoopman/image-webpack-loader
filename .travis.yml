@@ -5,5 +5,9 @@ before_install:
   - brew outdated libpng || brew upgrade libpng
 node_js:
   - "node"
-  - "9"
-  - "8"
+  - "lts"
+  - "14"
+  - "13"
+  - "12"
+  - "11"
+  - "10"

@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [7.0.0]
 
 * require node 10
 * upgrade imagemin-pngquant to 9.0.1

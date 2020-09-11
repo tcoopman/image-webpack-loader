@@ -24,7 +24,7 @@
   },
   "optionalDependencies": {
     "imagemin-gifsicle": "^7.0.0",
-    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^8.0.0",

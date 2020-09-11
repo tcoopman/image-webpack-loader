@@ -28,7 +28,7 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
-    "imagemin-webp": "^5.1.0"
+    "imagemin-webp": "^6.0.0"
   },
   "devDependencies": {
     "file-loader": "^6.0.0",

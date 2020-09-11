@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+* require node 10
+* upgrade imagemin-pngquant to 9.0.1
+* upgrade imagemin-webp to 6.0.0
+* upgrade imagemin-mozjpeg to 9.0.0
+* bump some packages for security fixes
+
+
 ## [6.0.0]
 
 * upgrade imagemin-pngquant to 8.0.0 (version bump because of the api change => quality now is an array). For more info see: https://github.com/imagemin/imagemin-pngquant#quality

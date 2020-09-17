@@ -39,7 +39,7 @@ module.exports = function(content) {
     optipng: config.optipng || {},
     svgo: config.svgo || {},
     // optional optimizers
-    webp: config.webp || {}
+    webp: config.webp || { enabled: false }
   };
   // Remove in interlaced, progressive and optimizationLevel checks in new major version
   if (config.hasOwnProperty('interlaced')) {
@@ -79,7 +79,7 @@ module.exports = function(content) {
     if(options.optipng.enabled !== false)
       plugins.push(require('imagemin-optipng')(options.optipng));
     // optional optimizers
-    if(options.webp)
+    if(options.webp.enabled !== false)
       plugins.push(require('imagemin-webp')(options.webp));
 
     imagemin

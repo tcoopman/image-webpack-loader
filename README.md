@@ -61,7 +61,6 @@ rules: [{
       options: {
         mozjpeg: {
           progressive: true,
-          quality: 65
         },
         // optipng.enabled: false will disable optipng
         optipng: {
@@ -96,7 +95,7 @@ And optional optimizers:
 
 - [webp](https://github.com/imagemin/imagemin-webp) — *Compress JPG & PNG images into WEBP*
 
-_Default optimizers can be disabled by specifying `optimizer.enabled: false`, and optional ones can be enabled by simply putting them in the options_
+_Each optimizers can be disabled by specifying `optimizer.enabled: false`, and optional ones can be enabled by simply putting them in the options_
 
 If you are using Webpack 1, take a look at the [old docs](http://webpack.github.io/docs/using-loaders.html) (or consider upgrading).
 

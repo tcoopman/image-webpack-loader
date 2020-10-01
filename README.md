@@ -15,6 +15,43 @@ Image loader module for webpack
 $ npm install image-webpack-loader --save-dev
 ```
 
+### Install in container
+
+#### `node:12-buster`
+
+No additional preparations required.
+All dependencies will be compiled automatically.  
+**Not** recommended because of large image size (~1 GB).
+
+#### `node:12-buster-slim`
+
+Prepare script:
+
+```shell script
+apt-get update
+apt-get install -y --no-install-recommends autoconf automake g++ libpng-dev make
+```
+
+**Recommended** container image.
+
+#### `node:12-alpine`
+
+Prepare script:
+
+```shell script
+apk add --no-cache autoconf automake file g++ libtool make nasm libpng-dev
+```
+
+**Not** recommended because of long build time.
+
+#### Benchmark
+
+| Container distro      | Pull time  | Build time  | Total time  |
+| --------------------- | ---------- | ----------- | ----------- |
+| `node:12-buster`      | 42 seconds | 77 seconds  | 119 seconds |
+| `node:12-buster-slim` | 11 seconds | 103 seconds | 114 seconds |
+| `node:12-alpine`      | 8 seconds  | 122 seconds | 130 seconds |
+
 ### libpng issues
 
 Installing on some versions of OSX may raise errors with a [missing libpng dependency](https://github.com/tcoopman/image-webpack-loader/issues/51#issuecomment-273597313): 

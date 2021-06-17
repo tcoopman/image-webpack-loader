@@ -23,7 +23,7 @@
     "imagemin-webp": "^6.0.0",
     "loader-utils": "^2.0.0",
     "object-assign": "^4.1.1",
-    "schema-utils": "^2.7.1"
+    "schema-utils": "^3.0.0"
   },
   "optionalDependencies": {
     "imagemin-gifsicle": "^7.0.0",

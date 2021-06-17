@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+* require node 12
+* remove support for webpack 1, 2, 3
+* bump packages for security fixes
+
 ## [7.0.0]
 
 * require node 10

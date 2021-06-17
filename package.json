@@ -1,6 +1,6 @@
 {
   "name": "image-webpack-loader",
-  "version": "7.0.1",
+  "version": "8.0.0",
   "description": "Image loader module for webpack",
   "author": "Thomas Coopman @tcoopman",
   "license": "MIT",
@@ -9,15 +9,18 @@
     "url": "git@github.com:tcoopman/image-webpack-loader.git"
   },
   "scripts": {
-    "test:webpack1": "npm install -q webpack@1.x && npm run test:clean && webpack --config test/webpack1.config.js",
-    "test:webpack2": "npm install -q webpack@2.x && npm run test:clean && webpack --config test/webpack2.config.js",
-    "test:webpack3": "npm install -q webpack@3.x && npm run test:clean && webpack --config test/webpack2.config.js",
     "test:webpack4": "npm install -q webpack@4.x webpack-cli && npm run test:clean && webpack --config test/webpack4.config.js",
     "test:clean": "rimraf test/public/assets",
-    "test": "npm run test:webpack1 && npm run test:webpack2 && npm run test:webpack3 && npm run test:webpack4"
+    "test": "npm run test:webpack4"
   },
   "dependencies": {
     "imagemin": "^7.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^8.0.0",
+    "imagemin-webp": "^6.0.0",
     "loader-utils": "^2.0.0",
     "object-assign": "^4.1.1",
     "schema-utils": "^2.7.1"
@@ -26,14 +29,14 @@
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
-    "imagemin-pngquant": "^9.0.1",
+    "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^8.0.0",
     "imagemin-webp": "^6.0.0"
   },
   "devDependencies": {
-    "file-loader": "^6.1.0",
+    "file-loader": "^6.2.0",
     "rimraf": "^3.0.2",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^4.3.1"
+    "webpack": "^4.45.0",
+    "webpack-cli": "^4.7.2"
   }
 }

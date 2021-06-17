@@ -17,7 +17,7 @@
     "test": "npm run test:webpack1 && npm run test:webpack2 && npm run test:webpack3 && npm run test:webpack4"
   },
   "dependencies": {
-    "imagemin": "^7.0.1",
+    "imagemin": "^8.0.0",
     "loader-utils": "^2.0.0",
     "object-assign": "^4.1.1",
     "schema-utils": "^2.7.1"

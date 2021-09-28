@@ -15,12 +15,6 @@
   },
   "dependencies": {
     "imagemin": "^7.0.1",
-    "imagemin-gifsicle": "^7.0.0",
-    "imagemin-mozjpeg": "^9.0.0",
-    "imagemin-optipng": "^8.0.0",
-    "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^8.0.0",
-    "imagemin-webp": "^6.0.0",
     "loader-utils": "^2.0.0",
     "object-assign": "^4.1.1",
     "schema-utils": "^2.7.1"
@@ -30,13 +24,13 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^8.0.0",
+    "imagemin-svgo": "^9.0.0",
     "imagemin-webp": "^6.0.0"
   },
   "devDependencies": {
     "file-loader": "^6.2.0",
     "rimraf": "^3.0.2",
-    "webpack": "^4.45.0",
-    "webpack-cli": "^4.7.2"
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.8.0"
   }
 }

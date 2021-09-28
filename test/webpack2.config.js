@@ -15,10 +15,12 @@ var loaderOptions = {
   svgo: {
     plugins: [
       {
-        removeViewBox: false
+        name: 'removeViewBox',
+        active: false
       },
       {
-        removeEmptyAttrs: false
+        name: 'removeEmptyAttrs',
+        active: false
       }
     ]
   },

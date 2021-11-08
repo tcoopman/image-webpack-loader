@@ -30,7 +30,7 @@
   "devDependencies": {
     "file-loader": "^6.2.0",
     "rimraf": "^3.0.2",
-    "webpack": "^4.46.0",
+    "webpack": "^5.62.1",
     "webpack-cli": "^4.8.0"
   }
 }

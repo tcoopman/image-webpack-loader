@@ -81,7 +81,7 @@ module.exports = function(content) {
     // optional optimizers
     if(options.webp.enabled !== false) {
       async function loadWebp() {
-        await import('imagemin-webp').then(({ default: imageminWebp}) => {
+        await import('imagemin-webp').then(({ default: imageminWebp }) => {
           plugins.push(imageminWebp(options.webp));
         });
       }

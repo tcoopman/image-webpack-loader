@@ -24,7 +24,7 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^9.0.0",
+    "imagemin-svgo": "^10.0.1",
     "imagemin-webp": "^7.0.0"
   },
   "devDependencies": {

@@ -79,8 +79,14 @@ module.exports = function(content) {
     if(options.optipng.enabled !== false)
       plugins.push(require('imagemin-optipng')(options.optipng));
     // optional optimizers
-    if(options.webp.enabled !== false)
-      plugins.push(require('imagemin-webp')(options.webp));
+    if(options.webp.enabled !== false) {
+      async function loadWebp() {
+        await import('imagemin-webp').then(({ default: imageminWebp }) => {
+          plugins.push(imageminWebp(options.webp));
+        });
+      }
+      loadWebp()
+    }
 
     imagemin
       .buffer(content, {

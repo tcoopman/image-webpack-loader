@@ -2,6 +2,10 @@
 ![devDependencies status](https://david-dm.org/tcoopman/image-webpack-loader/dev-status.svg)
 ![Build status](https://github.com/tcoopman/image-webpack-loader/workflows/Testing/badge.svg)
 
+# DEPRECATED
+
+please use: https://github.com/webpack-contrib/image-minimizer-webpack-plugin/
+
 # image-webpack-loader
 
 Image loader module for webpack
